@@ -26,7 +26,7 @@
     }
 
     body{
-        background-image: url(./imgs/fondos/fondo.png);
+        background-image: url(../imgs/desktop/fondo.png);
         background-repeat: no-repeat;
         background-color: #E0E0E0;
         background-size: 100vw 50vh;
