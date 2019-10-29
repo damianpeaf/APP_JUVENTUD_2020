@@ -76,40 +76,8 @@
                     // $('#exampleModal').modal();
                 },
 
-
-                eventSources: [{
-
                     // añadiendo eventos puntuales
-                    events: [
-                        // evento sin finalizacion
-                        {
-                            title: 'evento 1: Juventud',
-                            descripcion: 'Empezará blablabla',
-                            start: '2019-10-15',
-                            // colores especificos
-                            color: 'yellow',
-                            textColor: 'red'
-                        },
-                        // evento con finalizacion
-                        {
-                            title: 'evento 2: Juventud',
-                            descripcion: 'Empezará que pax',
-                            start: '2019-10-24',
-                            end: '2019-10-31'
-                        },
-                        // evento con hora
-                        {
-                            title: 'evento 3: Juventud',
-                            descripcion: 'Empezará jejje',
-                            start: '2019-10-25T12:30',
-                            allDay: false
-                        }
-
-                    ],
-                    // colores generales
-                    color: 'black',
-                    textColor: 'yellow'
-                }],
+                    events: 'http://localhost/APP_JUVENTUD2020/eventos.php',
 
                 // obtener informacion de evento y agregando a modal
                 eventClick:function(calEvent, jsEvent, view) { 
