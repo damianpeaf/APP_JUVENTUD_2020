@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://www.youtube.com/redirect?event=video_description&v=XXjUg03F9ys&q=https%3A%2F%2Fmaxcdn.bootstrapcdn.com%2Fbootstrap%2F4.0.0%2Fcss%2Fbootstrap.min.css&redir_token=y9t6EAyDpHxjTpgY56Qd2FHy5_R8MTU3MjM5MjQ4MkAxNTcyMzA2MDgy">
+
+    <!-- Jquery -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/moment.min.js"></script>
+
+    <!-- Full calendar 3.8.2 -->
+    <script src="js/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="css/fullcalendar.min.css">
+    <script src="js/es.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="col-7">
+                    <div class="col"><div id="calendario"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    
+        $(document).ready(function () {
+            $('#calendario').fullCalendar({
+
+                header:{
+                    left:'today, prev, next',
+                    center: 'title',
+                    right: 'month, basicWeek, basicDay, agendaWeek, agendaDay' 
+                }
+
+            });            
+        });
+
+    </script>
+
+</body>
+</html>
