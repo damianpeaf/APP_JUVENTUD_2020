@@ -59,12 +59,36 @@
                 //     }
                 // },
 
+                // Evento Click en un dia
+
                 dayClick:function(date, jsEvent, view) {
                     alert('valor seleccionado '+ date.format());
                     alert('vista actual '+ view.name)
                     $(this).css('background-color', 'red')
                     $('#exampleModal').modal();
-                }
+                },
+
+                // añadiendo eventos puntuales
+                events: [
+                    // evento sin finalizacion
+                    {
+                        title:'evento 1: Juventud',
+                        start: '2019-10-15'
+                    },
+                    // evento con finalizacion
+                    {
+                        title:'evento 2: Juventud',
+                        start: '2019-10-24',
+                        end: '2019-10-31'
+                    },
+                    // evento con hora
+                    {
+                        title:'evento 3: Juventud',
+                        start: '2019-10-25T12:30',
+                        allDay: false
+                    }
+
+                ]
 
             });            
         });
