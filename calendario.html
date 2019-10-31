@@ -70,21 +70,35 @@
                 // Evento Click en un dia
 
                 dayClick: function (date, jsEvent, view) {
-                    alert('valor seleccionado ' + date.format());
-                    alert('vista actual ' + view.name)
-                    // $(this).css('background-color', 'red')
-                    // $('#exampleModal').modal();
+                    // alert('valor seleccionado ' + date.format());  <- Fecha selecconada
+                    // alert('vista actual ' + view.name)  <- vista actual
+                    // $(this).css('background-color', 'red') <- depuracion :V
+                    $('#txtFecha').val(date.format())
+                    $('#formModal').modal();
                 },
 
-                    // añadiendo eventos puntuales
-                    events: './eventos.php',
+                // añadiendo eventos puntuales
+                events: './eventos.php',
 
                 // obtener informacion de evento y agregando a modal
-                eventClick:function(calEvent, jsEvent, view) { 
-                    $('#tituloEvento').html(calEvent.title)
-                    $('#descripcionEvento').html(calEvent.descripcion)
+                eventClick: function (calEvent, jsEvent, view) {
+                    
+                    //lo agrega en el h5
+                    $('#tituloModal').html(calEvent.title)
+                    
+                    // lo agrega en los inputs
+                    $('#txtDescripcion').val(calEvent.descripcion)
+                    $('#txtId').val(calEvent.id)
+                    $('#txtTitulo').val(calEvent.title)
+                    $('#txtColor').val(calEvent.color)
 
-                    $('#exampleModal').modal();
+                    FechaHora = calEvent.start._i.split(" ")
+                    $('#txtFecha').val(FechaHora[0])
+                    $('#txtHora').val(FechaHora[1])
+
+
+                    // $('#exampleModal').modal();  <- Modal de informacion
+                    $('#formModal').modal();
                 }
 
             });
@@ -92,7 +106,7 @@
 
     </script>
 
-    <!-- Modal -->
+    <!-- Modal Informacion -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -117,6 +131,62 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Formulario-->
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tituloModal"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Id: <input type="text" name="txtId" id="txtId">
+                    Fecha <input type="text" id="txtFecha" name="txtFecha"><br>
+                    Titulo: <input type="text" id="txtTitulo" name="txtFecha"><br>
+                    Hora <input type="text" id="txtHora" name="txtFecha" value="10:30"><br>
+                    Descripcion <textarea name="" id="txtDescripcion" cols="30" rows="3"></textarea><br>
+                    Color <input type="color" id="txtColor" value="#ff0000"><br>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnAgregar" class="btn btn-success">Agregar</button>
+                    <button type="button" class="btn btn-success">Modificar</button>
+                    <button type="button" class="btn btn-danger">Borrar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var nuevoEvento;
+
+        $('#btnAgregar').click(function () {
+            RecolectarDatosGUI()
+            $('#calendario').fullCalendar('renderEvent', nuevoEvento)
+            $('#formModal').modal('toggle');
+
+
+        })
+
+        function RecolectarDatosGUI() {
+            nuevoEvento = {
+                id: $('#txtId').val(),
+                title: $('#txtTitulo').val(),
+                start: $('#txtFecha').val() + ' ' + $('#txtHora').val(),
+                color: $('#txtColor').val(),
+                descripcion: $('#txtDescripcion').val(),
+                textColor: '#FFFFFF',
+                end: $('#txtFecha').val() + ' ' + $('#txtHora').val()
+            }
+        }
+
+    </script>
 
 </body>
 
