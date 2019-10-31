@@ -27,17 +27,19 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+<!-- destino -->
+    <link rel="stylesheet" href="./css/estilo_navbar.css">
+
+
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="col-7">
-                    <div class="col">
-                        <div id="calendario"></div>
-                    </div>
-                </div>
+                <!-- <div class="col-7"> -->
+                        <div id="calendario" style="height: 80vh;"></div>
+                <!-- </div> -->
             </div>
         </div>
     </div>
@@ -47,7 +49,7 @@
         $(document).ready(function () {
             $('#calendario').fullCalendar({
 
-
+                height: $(window).height() - 100,
                 // controles disponivles
 
                 header: {

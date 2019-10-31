@@ -9,14 +9,17 @@
 
     <!-- Estilos -->
     <!-- Nav -->
-    <link rel="stylesheet" href="./css/estilo_navbar.css">
+    <!-- <link rel="stylesheet" href="./css/estilo_navbar.css"> -->
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 </head>
 
 <body>
     <header>
         <div class="menu-grid-container">
-            <div class="menu-item" id="logo"><img src="./img/desktop/logo.png"></div>
+            <div class="menu-item" id="logo"><img src="./img/desktop/logo.png"><span>PeriódicoDB</span></div>
             <div class="menu-item" id="redes">
                 <div class="redes-grid-container">
 
@@ -42,6 +45,21 @@
             <div class="menu-item" id="logoJuventud"><img src="./img/desktop/logo2.png"></div>
         </div>
     </header>
+
+    <main>
+        
+        <div class="inclusion-calendario"></div>
+
+    </main>
+
+    <script>
+        
+        $(document).ready(function () {
+            $('.inclusion-calendario').load('./calendario.html')
+        })
+        
+    </script>
+
 </body>
 
 </html>
