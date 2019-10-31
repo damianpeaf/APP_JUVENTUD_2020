@@ -124,3 +124,63 @@
     background: rgba(255, 255,255, .2);
 
 }
+
+@media screen and (max-width: 760px){
+    .menu-grid-container{
+        /* background: red; */
+
+        font-size: 12px;
+    }
+
+    #logo img{
+        margin: 0 1em;
+        height: 85%;
+    }
+}
+
+@media screen and (max-width: 665px){
+    .menu-grid-container{
+        /* background: red; */
+
+        font-size: 12px;
+    }
+
+    #logo img{
+        margin: 0 1em;
+        height: 85%;
+    }
+
+    .menu-grid-container{
+        display: grid;
+        grid-template-columns: 10% 40% 40% 10%;
+    
+    }
+
+    #logo-nombre{
+        display: none;
+    }
+    
+
+}
+
+
+@media screen and (max-width: 465px){
+    
+    .menu-item{
+        height: 6vh;
+    }
+
+    .menu-grid-container{
+        /* width: 100vw; */
+        height: 6vh;
+    }
+
+}
+
+@media screen and (max-width: 380px){
+    
+    *{
+        font-size: 8px;
+    }
+
+}
