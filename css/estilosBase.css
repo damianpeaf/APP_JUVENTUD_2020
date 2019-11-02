@@ -1,0 +1,173 @@
+* {
+  font-size: 12pt;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #828282;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[10];
+      grid-template-columns: repeat(10, 1fr);
+  -ms-grid-rows: 10vh 90vh 90vh 10vh;
+      grid-template-rows: 10vh 90vh 90vh 10vh;
+      grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias" "footer footer footer footer footer footer footer footer footer footer";
+}
+
+.contenedorHeader {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 10;
+  grid-area: nav;
+  background: #0191F6;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 20% 40% 10%;
+      grid-template-columns: 30% 20% 40% 10%;
+}
+
+.contenedorHeader .menu-item {
+  height: 10vh;
+}
+
+.contenedorHeader #logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.contenedorHeader #logo img {
+  margin: 0 1em;
+  height: 100%;
+}
+
+.contenedorHeader #logo span {
+  font-family: "UnispaceW00-Bold";
+  color: white;
+  font-size: 18px;
+}
+
+.contenedorHeader .redes-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.contenedorHeader .redes-container img {
+  height: 2.7em;
+  width: 2.7em;
+  margin: 0 .5em;
+}
+
+.contenedorHeader #logoJuventud {
+  -ms-grid-column-align: end;
+      justify-self: end;
+}
+
+.contenedorHeader #logoJuventud img {
+  height: 100%;
+}
+
+.contenedorHeader #categorias {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
+.contenedorHeader #categorias div {
+  border-bottom: .5rem solid;
+  position: relative;
+  width: 100%;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.contenedorHeader #categorias div a {
+  display: inline;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: white;
+}
+
+.contenedorHeader #categorias div:nth-child(1) {
+  border-bottom-color: #0166AC;
+}
+
+.contenedorHeader #categorias div:nth-child(2) {
+  border-bottom-color: #45B2B2;
+}
+
+.contenedorHeader #categorias div:nth-child(3) {
+  border-bottom-color: #FFBD39;
+}
+
+.contenedorHeader #categorias div:nth-child(4) {
+  border-bottom-color: #FF693B;
+}
+
+.contenedorHeader #categorias div:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.contenedorCalendario {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 10;
+  grid-area: calendario;
+  position: relative;
+  padding: 1rem;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(0, 0, 0, 0))), url("../img/desktop/banner.png");
+  background-image: linear-gradient(black, rgba(0, 0, 0, 0)), url("../img/desktop/banner.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-blend-mode: darken;
+}
+
+.contenedorCalendario #calendario {
+  width: 45%;
+  left: 50%;
+  padding: 2rem;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: rgba(242, 242, 242, 0.5);
+  border-radius: .5rem;
+}
+
+.contenedorNoticias {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 10;
+  grid-area: noticias;
+}
+
+.contenedorFooter {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 10;
+  grid-area: footer;
+  background: #0191F6;
+}
+/*# sourceMappingURL=estilosBase.css.map */

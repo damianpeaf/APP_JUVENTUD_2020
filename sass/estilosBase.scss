@@ -1,0 +1,122 @@
+
+@import 'includes/colorScheme.scss';
+
+*{
+  font-size: 12pt;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $gray3;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 10vh 90vh 90vh 10vh;
+  grid-template-areas:
+  "nav nav nav nav nav nav nav nav nav nav"
+  "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario"
+  "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias"
+  "footer footer footer footer footer footer footer footer footer footer";
+}
+.contenedorHeader{
+  grid-area: nav;
+  background: $secondaryColor;
+  display: grid;
+  grid-template-columns: 30% 20% 40% 10%;
+  .menu-item{
+    height: 10vh;
+  }
+  #logo{
+    display: flex;
+    align-items: center;
+    img{
+      margin: 0 1em;
+      height: 100%;
+    }
+    span {
+      font-family: "UnispaceW00-Bold";
+      color: white;
+      font-size: 18px;
+    }
+  }
+  .redes-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    img{
+      height: 2.7em;
+      width: 2.7em;
+      margin: 0 .5em;
+    }
+  }
+  #logoJuventud{
+    justify-self: end;
+    img{
+      height: 100%;
+    }
+  }
+  #categorias{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    div{
+      border-bottom: .5rem solid;
+      position: relative;
+      width: 100%;
+      transition: .2s;
+      a {
+        display: inline;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+      }
+      &:nth-child(1){
+        border-bottom-color: $religionBaseColor;
+      }
+      &:nth-child(2){
+        border-bottom-color: $deporteBaseColor;
+      }
+      &:nth-child(3){
+        border-bottom-color: $cienciaBaseColor;
+      }
+      &:nth-child(4){
+        border-bottom-color: $arteBaseColor;
+      }
+      &:hover{
+        background: rgba(255, 255,255, .2);
+      }
+    }
+  }
+}
+.contenedorCalendario {
+  grid-area: calendario;
+  position: relative;
+  padding: 1rem;
+  background-image: linear-gradient(black, rgba(0,0,0,0)), url('../img/desktop/banner.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-blend-mode: darken;
+  #calendario{
+    width: 45%;
+    left: 50%;
+    padding: 2rem;
+    position: absolute;
+    transform: translateX(-50%);
+    background: rgba($gray6, .5);
+    border-radius: .5rem;
+  }
+}
+.contenedorNoticias {
+  grid-area: noticias;
+}
+.contenedorFooter {
+  grid-area: footer;
+  background: $secondaryColor;
+}
