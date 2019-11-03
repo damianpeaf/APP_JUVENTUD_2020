@@ -1,6 +1,22 @@
-* {
+:root {
   font-size: 12pt;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  font-family: Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-size: .8rem;
 }
 
 a {
@@ -12,7 +28,7 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  background: #828282;
+  background: #333;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[10];
@@ -137,7 +153,7 @@ body {
   -ms-grid-column-span: 10;
   grid-area: calendario;
   position: relative;
-  padding: 1rem;
+  padding: .8rem;
   background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(0, 0, 0, 0))), url("../img/desktop/banner.png");
   background-image: linear-gradient(black, rgba(0, 0, 0, 0)), url("../img/desktop/banner.png");
   background-repeat: no-repeat;
@@ -146,7 +162,7 @@ body {
 }
 
 .contenedorCalendario #calendario {
-  width: 45%;
+  width: 42%;
   left: 50%;
   padding: 2rem;
   position: absolute;
@@ -161,6 +177,40 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 10;
   grid-area: noticias;
+}
+
+.contenedorNoticias .noticias {
+  position: relative;
+}
+
+.contenedorNoticias .noticias .listadoNoticias {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[4];
+      grid-template-rows: repeat(4, 1fr);
+  gap: .2rem;
+}
+
+.contenedorNoticias .noticias .listadoNoticias .noticia {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 25% 75%;
+      grid-template-columns: 25% 75%;
+  -ms-grid-rows: 100%;
+      grid-template-rows: 100%;
+  background: #f2f2f2;
+}
+
+.contenedorNoticias .noticias .listadoNoticias .noticia .imagenNoticia {
+  background: #bdbdbd;
+}
+
+.contenedorNoticias .noticias .listadoNoticias .noticia .descripcionNoticia {
+  padding: .3rem;
 }
 
 .contenedorFooter {

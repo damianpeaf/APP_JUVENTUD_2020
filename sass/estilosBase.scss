@@ -1,9 +1,22 @@
 
 @import 'includes/colorScheme.scss';
 
-*{
+:root{
   font-size: 12pt;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+::-webkit-scrollbar{
+  display: none;
+}
+
+*{
+  font-family: Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
+}
+h1{
+  color: white;
+  text-align: center;
+}
+p{
+  font-size: .8rem;
 }
 a{
   text-decoration: none;
@@ -13,7 +26,7 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  background: $gray3;
+  background: $gray1;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: 10vh 90vh 90vh 10vh;
@@ -98,13 +111,13 @@ body {
 .contenedorCalendario {
   grid-area: calendario;
   position: relative;
-  padding: 1rem;
+  padding: .8rem;
   background-image: linear-gradient(black, rgba(0,0,0,0)), url('../img/desktop/banner.png');
   background-repeat: no-repeat;
   background-size: 100%;
   background-blend-mode: darken;
   #calendario{
-    width: 45%;
+    width: 42%;
     left: 50%;
     padding: 2rem;
     position: absolute;
@@ -115,6 +128,29 @@ body {
 }
 .contenedorNoticias {
   grid-area: noticias;
+  .noticias{
+    position: relative;
+    .listadoNoticias{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      gap: .2rem;
+      .noticia{
+        display: grid;
+        grid-template-columns: 25% 75%;
+        grid-template-rows: 100%;
+        background: $gray6;
+        .imagenNoticia{
+          background: $gray4;
+        }
+        .descripcionNoticia{
+          padding: .3rem;
+        }
+      }
+    }
+  }
 }
 .contenedorFooter {
   grid-area: footer;
