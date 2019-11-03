@@ -8,8 +8,29 @@
     <title>PeriódicoDB</title>
 
     <!-- Estilos -->
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Jquery -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/moment.min.js"></script>
+
+    <!-- Full calendar 3.8.2 -->
+    <script src="js/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="css/fullcalendar.min.css">
+    <script src="js/es.js"></script>
+
+    <!-- Bootsrap modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="css/estilosBase.css">
-    
+
     <!-- Jquery -->
     <script src="js/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>
@@ -51,10 +72,50 @@
         <div class="menu-item" id="logoJuventud"><img src="./img/desktop/logo2.png"></div>
     </header>
 
+    <!-- Menu para telefono Escondido -->
+
+    <!-- Parte arriba -->
+
+    <div class="phone-header">
+        <div class="menu-item" id="logo">
+            <img src="./img/desktop/logo.png">
+        </div>
+        <div class="menu-item" id="redes">
+            <nav class="redes-container">
+
+                <a href="https://www.instagram.com/movjuveoficial/?hl=es">
+                    <img src="./img/desktop/instagram.png">
+                </a>
+                <!-- Twitter -->
+                <a href="https://twitter.com/vidacolegiodb?lang=es">
+                    <img src="./img/desktop/twitter.png">
+                </a>
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/movjuveoficial/">
+                    <img src="./img/desktop/facebook.png">
+                </a>
+            </nav>
+        </div>
+        <div class="menu-item" id="logoJuventud"><img src="./img/desktop/logo2.png"></div>
+    </div>
+    <!-- Parte abajo -->
+    <div class="phone-footer">
+        <div class="categorias">
+            <div><a href="">Religión</a></div>
+            <div><a href="">Deporte</a></div>
+            <div><a href="">Ciencia</a></div>
+            <div><a href="">Arte</a></div>
+        </div>
+    </div>
+
+
+
+    <!-- Fin  -->
+
     <main class="contenedorCalendario">
         <div class="inclusion-calendario" id="calendario"></div>
     </main>
-    
+
     <main class="contenedorNoticias">
         <div class="noticias">
             <h1>Noticias</h1>
@@ -70,7 +131,7 @@
     <script>
         $(document).ready(function () {
             $('#calendario').fullCalendar({
-                
+
                 // contentHeight: $(window).height - 150,
                 // aspectRadio: 1,
 
@@ -109,10 +170,10 @@
 
                 // obtener informacion de evento y agregando a modal
                 eventClick: function (calEvent, jsEvent, view) {
-                    
+
                     //lo agrega en el h5
                     $('#tituloModal').html(calEvent.title)
-                    
+
                     // lo agrega en los inputs
                     $('#txtDescripcion').val(calEvent.descripcion)
                     $('#txtId').val(calEvent.id)
