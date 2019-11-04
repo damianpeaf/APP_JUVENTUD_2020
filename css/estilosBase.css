@@ -284,6 +284,12 @@ body {
         grid-template-rows: 10vh 80vh 10vh 90vh 10vh;
         grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "opciones opciones opciones opciones opciones opciones opciones opciones opciones opciones" "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias" "footer footer footer footer footer footer footer footer footer footer";
   }
+  .contenedorCalendario {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 10;
+    grid-area: calendario;
+  }
   .contenedorCalendario #calendario h2 {
     font-size: 20px;
   }
