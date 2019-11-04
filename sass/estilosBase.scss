@@ -227,7 +227,7 @@ body {
 @media screen and (max-width: 500px) {
 
   body{
-    grid-template-rows: 10vh 80vh 10vh 90vh 10vh;
+    grid-template-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80)  calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
     grid-template-areas:
     "nav nav nav nav nav nav nav nav nav nav"
     "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario"
