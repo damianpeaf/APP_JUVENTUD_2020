@@ -26,6 +26,7 @@ a {
 
 body {
   margin: 0;
+  width: 100vw;
   height: 100vh;
   background: #333;
   display: -ms-grid;
@@ -194,10 +195,13 @@ body {
 }
 
 .contenedorNoticias .noticias {
-  position: relative;
+  height: 100%;
+  display: block;
 }
 
 .contenedorNoticias .noticias .listadoNoticias {
+  width: 80%;
+  height: 77%;
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -224,7 +228,7 @@ body {
 }
 
 .contenedorNoticias .noticias .listadoNoticias .noticia .descripcionNoticia {
-  padding: .3rem;
+  padding: .5rem;
 }
 
 .contenedorFooter {
@@ -325,11 +329,6 @@ body {
   .phone-header #logo img {
     margin: 0 1em;
     height: 100%;
-  }
-  .phone-header #logo span {
-    font-family: "UnispaceW00-Bold";
-    color: white;
-    font-size: 18px;
   }
   .phone-header .redes-container {
     display: -webkit-box;
