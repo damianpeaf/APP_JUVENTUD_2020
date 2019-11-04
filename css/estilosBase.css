@@ -7,7 +7,7 @@
 }
 
 * {
-  font-family: Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
+  font-family: Tahoma, "Segoe UI", Geneva, Verdana, sans-serif;
 }
 
 h1 {
@@ -16,7 +16,7 @@ h1 {
 }
 
 p {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 a {
@@ -98,7 +98,7 @@ body {
 .contenedorHeader .redes-container img {
   height: 2.7em;
   width: 2.7em;
-  margin: 0 .5em;
+  margin: 0 0.5em;
 }
 
 .contenedorHeader #logoJuventud {
@@ -118,11 +118,11 @@ body {
 }
 
 .contenedorHeader #categorias div {
-  border-bottom: .5rem solid;
+  border-bottom: 0.5rem solid;
   position: relative;
   width: 100%;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .contenedorHeader #categorias div a {
@@ -161,7 +161,7 @@ body {
   -ms-grid-column-span: 10;
   grid-area: calendario;
   position: relative;
-  padding: .8rem;
+  padding: 0.8rem;
   background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(0, 0, 0, 0))), url("../img/desktop/banner.png");
   background-image: linear-gradient(black, rgba(0, 0, 0, 0)), url("../img/desktop/banner.png");
   background-repeat: no-repeat;
@@ -206,7 +206,7 @@ body {
   display: grid;
   -ms-grid-rows: (1fr)[4];
       grid-template-rows: repeat(4, 1fr);
-  gap: .2rem;
+  gap: 0.2rem;
 }
 
 .contenedorNoticias .noticias .listadoNoticias .noticia {
@@ -224,7 +224,7 @@ body {
 }
 
 .contenedorNoticias .noticias .listadoNoticias .noticia .descripcionNoticia {
-  padding: .3rem;
+  padding: 0.3rem;
 }
 
 .contenedorFooter {
@@ -255,7 +255,7 @@ body {
   .contenedorHeader .redes-container img {
     height: 2.2em;
     width: 2.2em;
-    margin: 0 .5em;
+    margin: 0 0.5em;
   }
 }
 
@@ -280,8 +280,8 @@ body {
 
 @media screen and (max-width: 500px) {
   body {
-    -ms-grid-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
-        grid-template-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
+    -ms-grid-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc( var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
+        grid-template-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc( var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
         grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "opciones opciones opciones opciones opciones opciones opciones opciones opciones opciones" "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias" "footer footer footer footer footer footer footer footer footer footer";
   }
   .contenedorCalendario {
@@ -293,7 +293,8 @@ body {
   .contenedorCalendario #calendario h2 {
     font-size: 20px;
   }
-  .contenedorCalendario #calendario .fc-toolbar, .contenedorCalendario #calendario .fc-header-toolbar {
+  .contenedorCalendario #calendario .fc-toolbar,
+  .contenedorCalendario #calendario .fc-header-toolbar {
     margin: 0;
   }
   .contenedorHeader {
@@ -346,7 +347,7 @@ body {
   .phone-header .redes-container img {
     height: 2.7em;
     width: 2.7em;
-    margin: 0 .5em;
+    margin: 0 0.5em;
   }
   .phone-header #logoJuventud {
     -ms-grid-column-align: end;
@@ -371,12 +372,12 @@ body {
         grid-template-columns: repeat(4, 1fr);
   }
   .phone-footer .categorias div {
-    border-top: .5rem solid;
+    border-top: 0.5rem solid;
     position: relative;
     width: 100%;
     height: 10vh;
-    -webkit-transition: .2s;
-    transition: .2s;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
   }
   .phone-footer .categorias div a {
     display: inline;
