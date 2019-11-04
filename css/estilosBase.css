@@ -356,10 +356,6 @@ body {
     -ms-grid-column-span: 10;
     grid-area: opciones;
     display: initial;
-    position: absolute;
-    width: 100vw;
-    height: 10vh;
-    bottom: 0;
     background: #0191F6;
   }
   .phone-footer .categorias {
