@@ -128,7 +128,9 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
   background-blend-mode: darken;
+  z-index: 1;
   #calendario{
+    z-index: 2;
 
     h2{
       color: white;
@@ -236,7 +238,6 @@ body {
 
   .contenedorCalendario {
     #calendario{
-      z-index: -1;
       h2{
         font-size: 20px;
       }
@@ -293,7 +294,7 @@ body {
 
 
 .phone-footer{
-  z-index: 1;
+  z-index: 3;
   grid-area: opciones;
   display: initial;
   position: absolute;

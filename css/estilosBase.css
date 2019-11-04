@@ -167,6 +167,11 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
   background-blend-mode: darken;
+  z-index: 1;
+}
+
+.contenedorCalendario #calendario {
+  z-index: 2;
 }
 
 .contenedorCalendario #calendario h2 {
@@ -279,9 +284,6 @@ body {
         grid-template-rows: 10vh 80vh 10vh 90vh 10vh;
         grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "opciones opciones opciones opciones opciones opciones opciones opciones opciones opciones" "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias" "footer footer footer footer footer footer footer footer footer footer";
   }
-  .contenedorCalendario #calendario {
-    z-index: -1;
-  }
   .contenedorCalendario #calendario h2 {
     font-size: 20px;
   }
@@ -348,7 +350,7 @@ body {
     height: 100%;
   }
   .phone-footer {
-    z-index: 1;
+    z-index: 3;
     -ms-grid-row: 3;
     -ms-grid-column: 1;
     -ms-grid-column-span: 10;
