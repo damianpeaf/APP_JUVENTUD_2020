@@ -34,10 +34,7 @@ body {
       grid-template-columns: repeat(10, 1fr);
   -ms-grid-rows: 10vh 90vh 90vh 10vh;
       grid-template-rows: 10vh 90vh 90vh 10vh;
-      grid-template-areas: "nav nav nav nav nav nav nav nav nav nav"
- "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario"
- "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias"
- "footer footer footer footer footer footer footer footer footer footer";
+      grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias" "footer footer footer footer footer footer footer footer footer footer";
 }
 
 .phone-header {
@@ -172,15 +169,12 @@ body {
   background-blend-mode: darken;
 }
 
-.contenedorCalendario #calendario {
-  width: 42%;
-  left: 50%;
-  padding: 2rem;
-  position: absolute;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  background: rgba(242, 242, 242, 0.5);
-  border-radius: .5rem;
+.contenedorCalendario #calendario h2 {
+  color: white;
+}
+
+.contenedorCalendario #calendario .fc-view-container {
+  background: white;
 }
 
 .contenedorNoticias {
@@ -233,9 +227,6 @@ body {
 }
 
 @media screen and (max-width: 760px) {
-  .contenedorHeader {
-    font-size: 24px;
-  }
   .contenedorHeader #logo img {
     margin: 0 1em;
     height: 85%;
@@ -279,6 +270,17 @@ body {
 }
 
 @media screen and (max-width: 500px) {
+  body {
+    -ms-grid-rows: 10vh 80vh 10vh 90vh 10vh;
+        grid-template-rows: 10vh 80vh 10vh 90vh 10vh;
+        grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "opciones opciones opciones opciones opciones opciones opciones opciones opciones opciones" "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias" "footer footer footer footer footer footer footer footer footer footer";
+  }
+  .contenedorCalendario #calendario h2 {
+    font-size: 20px;
+  }
+  .contenedorCalendario #calendario .fc-toolbar, .contenedorCalendario #calendario .fc-header-toolbar {
+    margin: 0;
+  }
   .contenedorHeader {
     display: none;
   }

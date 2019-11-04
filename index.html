@@ -29,16 +29,8 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+    <!-- basicos -->
     <link rel="stylesheet" href="css/estilosBase.css">
-
-    <!-- Jquery -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/moment.min.js"></script>
-
-    <!-- Full calendar 3.8.2 -->
-    <script src="js/fullcalendar.min.js"></script>
-    <link rel="stylesheet" href="css/fullcalendar.min.css">
-    <script src="js/es.js"></script>
 
 </head>
 
@@ -165,15 +157,17 @@
         $(document).ready(function () {
             $('#calendario').fullCalendar({
 
-                // contentHeight: $(window).height - 150,
+                // contentHeight: $(window).height - 1,
                 // aspectRadio: 1,
+
+                height: 'parent',
 
                 // controles disponivles
 
                 header: {
-                    left: 'today, prev, next',
+                    left: 'prev',
                     center: 'title',
-                    right: 'month,basicWeek,basicDay'
+                    right: 'month,basicWeek,basicDay, next'
                 },
                 themeSystem: 'standard',
 
