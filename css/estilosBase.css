@@ -173,6 +173,10 @@ body {
   color: white;
 }
 
+.contenedorCalendario #calendario h2:first-letter {
+  text-transform: uppercase;
+}
+
 .contenedorCalendario #calendario .fc-view-container {
   background: white;
 }
@@ -341,6 +345,10 @@ body {
     height: 100%;
   }
   .phone-footer {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 10;
+    grid-area: opciones;
     display: initial;
     position: absolute;
     width: 100vw;

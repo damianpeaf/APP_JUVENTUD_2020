@@ -157,12 +157,7 @@
         $(document).ready(function () {
             $('#calendario').fullCalendar({
 
-                // contentHeight: $(window).height - 1,
-                // aspectRadio: 1,
-
                 height: 'parent',
-
-                // controles disponivles
 
                 header: {
                     left: 'prev',
@@ -171,37 +166,17 @@
                 },
                 themeSystem: 'standard',
 
-                // boton personalizado
-
-                // customButtons:{
-                //     Miboton:{
-                //         text:'btn 1',
-                //         click: function () {
-                //             alert('accion');
-                //         }
-                //     }
-                // },
-
-                // Evento Click en un dia
-
                 dayClick: function (date, jsEvent, view) {
-                    // alert('valor seleccionado ' + date.format());  <- Fecha selecconada
-                    // alert('vista actual ' + view.name)  <- vista actual
-                    // $(this).css('background-color', 'red') <- depuracion :V
                     $('#txtFecha').val(date.format())
                     $('#formModal').modal();
                 },
 
-                // añadiendo eventos puntuales
                 events: './eventos.php',
 
-                // obtener informacion de evento y agregando a modal
                 eventClick: function (calEvent, jsEvent, view) {
 
-                    //lo agrega en el h5
                     $('#tituloModal').html(calEvent.title)
 
-                    // lo agrega en los inputs
                     $('#txtDescripcion').val(calEvent.descripcion)
                     $('#txtId').val(calEvent.id)
                     $('#txtTitulo').val(calEvent.title)
@@ -210,9 +185,6 @@
                     FechaHora = calEvent.start._i.split(" ")
                     $('#txtFecha').val(FechaHora[0])
                     $('#txtHora').val(FechaHora[1])
-
-
-                    // $('#exampleModal').modal();  <- Modal de informacion
                     $('#formModal').modal();
                 }
 
