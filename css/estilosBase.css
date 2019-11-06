@@ -313,9 +313,15 @@ body {
 
 @media screen and (max-width: 500px) {
   body {
-    -ms-grid-rows: 10vh 80vh 10vh 90vh 10vh;
-        grid-template-rows: 10vh 80vh 10vh 90vh 10vh;
-        grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "opciones opciones opciones opciones opciones opciones opciones opciones opciones opciones" "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias" "footer footer footer footer footer footer footer footer footer footer";
+    -ms-grid-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc( var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
+        grid-template-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc( var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
+        grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "opciones opciones opciones opciones opciones opciones opciones opciones opciones opciones" "noticias noticias noticias noticias noticias noticias noticias noticias noticias deslizar" "footer footer footer footer footer footer footer footer footer footer";
+  }
+  .contenedorNoticiass {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 10;
+    grid-area: footer;
   }
   .contenedorCalendario {
     -ms-grid-row: 2;
