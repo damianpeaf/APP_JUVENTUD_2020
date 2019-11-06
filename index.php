@@ -102,18 +102,6 @@
 
     <!-- Fin  -->
 
-    <?php
-
-    // conexion
-
-    // peticion 
-
-    $texto = "Lorem ipsum dolor sit amet consectetur adipiscing elit vulputate cubilia pretium diam, tincidunt nascetur cum libero dapibus felis cras aliquam etiam sodales tellus, cursus imperdiet volutpat lobortis quisque vivamus nibh est at platea. Cubilia euismod nisi curabitur varius gravida duis fringilla sodales, diam lectus pharetra aliquet mattis justo semper est id, lacus nullam sociosqu integer augue lobortis velit. At libero morbi magna fringilla ridiculus aenean dui urna conubia egestas porttitor habitant, lobortis fusce integer rhoncus ultricies etiam tellus vestibulum felis proin diam.";
-
-    // comprobacion ¿?
-
-    ?>
-
     <main class="contenedorCalendario">
         <div class="inclusion-calendario" id="calendario"></div>
     </main>
@@ -127,7 +115,7 @@
             <div class="imagen-noticia"><img src="" ></div>
             <div class="informacion-noticia">
                 <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia"><?php echo $texto; ?></div>
+                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt cupiditate inventore nemo veritatis assumenda est eligendi!</div>
                 <p><a href='' > Ver más. </a></p>
             </div>
         </div>
@@ -136,7 +124,7 @@
             <div class="imagen-noticia"><img src="" ></div>
             <div class="informacion-noticia">
                 <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia"><?php echo $texto; ?></div>
+                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt cupiditate inventore nemo veritatis assumenda est eligendi!</div>
                 <p><a href='' > Ver más. </a></p>
             </div>
         </div>
@@ -145,7 +133,7 @@
             <div class="imagen-noticia"><img src="" ></div>
             <div class="informacion-noticia">
                 <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia"><?php echo $texto; ?></div>
+                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt cupiditate inventore nemo veritatis assumenda est eligendi!</div>
                 <p><a href='' > Ver más. </a></p>
             </div>
         </div>
@@ -154,16 +142,12 @@
             <div class="imagen-noticia"><img src="" ></div>
             <div class="informacion-noticia">
                 <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia"><?php echo $texto; ?></div>
+                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt cupiditate inventore nemo veritatis assumenda est eligendi!</div>
                 <p><a href='' > Ver más. </a></p>
             </div>
         </div>
 
     </main>
-
-    <div id="inutil">
-        hola
-    </div>
 
     <footer class="contenedorFooter">
         <div class="copyright">
