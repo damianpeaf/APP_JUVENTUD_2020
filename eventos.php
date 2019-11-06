@@ -1,18 +1,30 @@
 <?php
 
-    header('Content-Type: application/json');
+    // header('Content-Type: application/json');
 
-    $cn = mysqli_connect('localhost', 'root', '', 'calendario');
+    $cn = mysqli_connect('localhost', 'root', 'g@l@nd0nis', 'app juventud');
+    
+    $res = mysqli_query($cn, 'SELECT * FROM evento');
+    $eventos = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    // var_dump($eventos);
 
-    $sql = mysqli_query($cn, 'SELECT * FROM eventos');
+    $res = mysqli_query($cn, "SELECT color FROM Categoria");
+    $colores = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
-    $arreglo = array();
+    $eventosFormateados = [];
+    foreach ($eventos as $evento) {
+        $eventosFormateados[] = [
+            "id"=> $evento['idEvento'],
+            "groupId"=>$evento['idCategoria'],
+            "start"=>$evento['inicia'],
+            "end"=>$evento['termina'],
+            "title"=>$evento['titulo'],
+            "editable"=>false,
+            "backgroundColor"=>$colores[$evento['idCategoria']-1]['color']
+        ];
 
-    while($result = mysqli_fetch_assoc($sql)){
-        $arreglo[] = $result;
     }
 
-    echo json_encode($arreglo)
+    echo json_encode($eventosFormateados)
 
-    
 ?>
