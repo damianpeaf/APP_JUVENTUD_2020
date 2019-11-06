@@ -100,51 +100,65 @@
         </div>
     </div>
 
-
-
     <!-- Fin  -->
+
+    <?php
+
+    // conexion
+
+    // peticion 
+
+    $texto = "Lorem ipsum dolor sit amet consectetur adipiscing elit vulputate cubilia pretium diam, tincidunt nascetur cum libero dapibus felis cras aliquam etiam sodales tellus, cursus imperdiet volutpat lobortis quisque vivamus nibh est at platea. Cubilia euismod nisi curabitur varius gravida duis fringilla sodales, diam lectus pharetra aliquet mattis justo semper est id, lacus nullam sociosqu integer augue lobortis velit. At libero morbi magna fringilla ridiculus aenean dui urna conubia egestas porttitor habitant, lobortis fusce integer rhoncus ultricies etiam tellus vestibulum felis proin diam.";
+
+    // comprobacion ¿?
+
+    ?>
 
     <main class="contenedorCalendario">
         <div class="inclusion-calendario" id="calendario"></div>
     </main>
 
     <main class="contenedorNoticias">
-        <div class="noticias">
-            <h1 class="titulo">Noticias</h1>
-            <div class="listadoNoticias">
-                <div class="noticia">
-                    <div class="imagenNoticia"></div>
-                    <div class="descripcionNoticia">
-                        <h3 class="subtituloNoticia">TITULO DE LA NOTICIA</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere dicta quo blanditiis tenetur atque officia ut esse corporis dolores animi!</p>
-                    </div>
-                </div>
-                <div class="noticia">
-                    <div class="imagenNoticia"></div>
-                    <div class="descripcionNoticia">
-                        <h3 class="subtituloNoticia">TITULO DE LA NOTICIA</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere dicta quo blanditiis tenetur atque officia
-                            ut esse corporis dolores animi!</p>
-                    </div>
-                </div>
-                <div class="noticia">
-                    <div class="imagenNoticia"></div>
-                    <div class="descripcionNoticia">
-                        <h3 class="subtituloNoticia">TITULO DE LA NOTICIA</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere dicta quo blanditiis tenetur atque officia
-                            ut esse corporis dolores animi!</p>
-                    </div>
-                </div>
-                <div class="noticia">
-                    <div class="imagenNoticia"></div>
-                    <div class="descripcionNoticia">
-                        <h3 class="subtituloNoticia">TITULO DE LA NOTICIA</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere dicta quo blanditiis tenetur atque officia
-                            ut esse corporis dolores animi!</p>
-                    </div>
-                </div>
+        <div class="header-noticias"> 
+            <h1>Noticias</h1>
+        </div>
+
+        <div class="noticia">
+            <div class="imagen-noticia"><img src="" ></div>
+            <div class="informacion-noticia">
+                <div class="titulo-noticia"> lorem </div>
+                <div class="contenido-noticia"><?php echo $texto; ?></div>
+                <p><a href='' > Ver más. </a></p>
             </div>
         </div>
+
+        <div class="noticia">
+            <div class="imagen-noticia"><img src="" ></div>
+            <div class="informacion-noticia">
+                <div class="titulo-noticia"> lorem </div>
+                <div class="contenido-noticia"><?php echo $texto; ?></div>
+                <p><a href='' > Ver más. </a></p>
+            </div>
+        </div>
+        
+        <div class="noticia">
+            <div class="imagen-noticia"><img src="" ></div>
+            <div class="informacion-noticia">
+                <div class="titulo-noticia"> lorem </div>
+                <div class="contenido-noticia"><?php echo $texto; ?></div>
+                <p><a href='' > Ver más. </a></p>
+            </div>
+        </div>
+
+        <div class="noticia">
+            <div class="imagen-noticia"><img src="" ></div>
+            <div class="informacion-noticia">
+                <div class="titulo-noticia"> lorem </div>
+                <div class="contenido-noticia"><?php echo $texto; ?></div>
+                <p><a href='' > Ver más. </a></p>
+            </div>
+        </div>
+
     </main>
 
     <footer class="contenedorFooter">
