@@ -9,6 +9,11 @@
 
     <!-- Estilos -->
 
+    <!-- Loader -->
+
+    <link rel="stylesheet" href="./css/librerias/loaders.min.css">
+    <link rel="stylesheet" href="./css/librerias/loader-custom.css">
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
@@ -33,8 +38,27 @@
     <link rel="stylesheet" href="css/estilosBase.css">
 
 </head>
-
 <body>
+
+    <!-- LOADER code -->
+
+<script>
+    $(window).on('load', function() {
+        $('.loader').delay(1000).fadeOut('slow');
+    });
+</script>
+
+        <div class="loader">
+                <div class="loader-inner pacman">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div><span class="tooltip">
+                  <p></p></span>
+            </div>
+
     <header class="contenedorHeader">
         <div class="menu-item" id="logo">
             <img src="./img/desktop/logo.png"><span id="logo-nombre">PeriódicoDB</span>
