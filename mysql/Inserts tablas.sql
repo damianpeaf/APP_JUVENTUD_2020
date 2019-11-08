@@ -14,12 +14,18 @@ INSERT INTO `Categoria`(`idStatus`, `nombre`, `color`, `descripcion`) VALUES
 (1, 'Religión', '#0166AC', 'Todos los eventos de los que se encarga Religión.'),
 (1, 'Arte', '#FF693B', 'Todos los eventos de los que se encarga Arte y Cultura.');
 
+INSERT INTO `Usuario`(`idStatus`, `idTipoUsuario`, `usuario`, `email`, `contraseña`) VALUES
+(1, 2, 'pruebaMan', 'damianpeaf@gmail.com', '$2y$10$QHGiGHvnQBsHwvdplbzw5.5s0ZFsG1/yklVoG83EdzP/JrIBHCBJe');
+#password hola 
 
 INSERT INTO `Usuario`(`idStatus`, `idTipoUsuario`, `usuario`, `email`, `contraseña`) VALUES
-(1, 1, 'ELROHIRGT', 'elrohirgt@gmail.com', '$2y$10$yuwhBLuuO62.sCisG4dVi.ULdnPxxvQzVBDtMiiQDy1jyqsVmUwK.'),
-(1, 1, 'PIPA', 'damianpeaf@gmail.com', '$2y$10$pkcRxWMAPIeY9zBvwFLy2eDeJ2hN0ES5hQkJQlg/vlMuHkfNbOupC'),
-(1, 2, 'Creador 1', 'elrohirgt@gmail.com', '$2y$10$QpdBSBDdz3qp60vbaqzou.MLiYnfp6BxQ08j7dD1XX9BQ9DTrs2FW'),
-(1, 2, 'Creador 2', 'damianpeaf@gmail.com', '$2y$10$UpxrIQCmrdTtWI26L9hktOT/113Lp5gjTUJkcUEeUNusuVWlOM9Nm');
+(1, 1, 'ELROHIRGT', 'elrohirgt@gmail.com', '$2y$10$NV/Sd2XHiC6rboSYojjs0ucBenAV8EnK0kBZ7lQpREdTbD0qXsotS'),
+(1, 1, 'PIPA', 'damianpeaf@gmail.com', '$2y$10$Kn4iEmDvLQFESWAYSYMwGO7GaSmKYYO9VFz6Bx2YCXLBHuhZoikUG'),
+(1, 2, 'Creador 1', 'elrohirgt@gmail.com', '$2y$10$lLfJo29.JSR5gKaZfp88eum11Bw9b0C8eXvAOJ4/j6aqS1plaKGuS'),
+(1, 2, 'Creador 2', 'damianpeaf@gmail.com', '$2y$10$ivstHSA6tkMpOlgW4q6wa.2fcvOxN8o2aeIZdMIjcjDpf3uR4G3by');
+#password 123
+
+select * from Usuario;
 
 insert into Evento (idStatus, idUsuario, idCategoria, inicia, termina, fechaDePublicacion, titulo, descripcion, idEvento) values (1, 4, 4, '2020-09-07 08:42:17', '2020-09-10 16:42:17', '2020-01-12 18:06:26', 'Implemented 6th generation capability', 'Sed ante. Vivamus tortor. Duis mattis egestas metus.', 1);
 insert into Evento (idStatus, idUsuario, idCategoria, inicia, termina, fechaDePublicacion, titulo, descripcion, idEvento) values (1, 4, 4, '2020-06-28 15:14:33', '2020-07-04 22:14:33', '2020-10-20 13:59:40', 'Secured next generation middleware', 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.

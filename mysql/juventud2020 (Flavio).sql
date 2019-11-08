@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `app juventud`.`usuario` (
   `idUsuario` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `usuario` VARCHAR(16) NOT NULL,
   `email` VARCHAR(255) NULL DEFAULT NULL,
-  `contraseña` VARCHAR(32) NOT NULL,
+  `contraseña` CHAR(60) NOT NULL,
   PRIMARY KEY (`idUsuario`),
   INDEX `fk_TipoUsuario_Usuario_idx` (`idTipoUsuario` ASC) VISIBLE,
   INDEX `fk_Status_Usuario_idx` (`idStatus` ASC) VISIBLE,

@@ -85,4 +85,16 @@ input[type='submit'] {
   font-size: 18px;
   width: 85%;
 }
+
+input:-moz-read-only {
+  background-color: white;
+  text-align: center;
+  color: red;
+}
+
+input:read-only {
+  background-color: white;
+  text-align: center;
+  color: red;
+}
 /*# sourceMappingURL=estilosLogIn.css.map */

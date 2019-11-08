@@ -1,11 +1,12 @@
 <?php
 
     if (isset($_POST["btn"])) {
-        $pass = $_POST["btn"];
+        $pass = $_POST["password"]; //ERROR CORREGIDO ;'v
 
 
         $hash = password_hash($pass, PASSWORD_BCRYPT);
 
+        echo $pass."<br>";
         echo $hash ."<br>";
 
         echo var_dump(password_verify($pass,$hash));
