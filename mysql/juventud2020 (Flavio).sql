@@ -71,7 +71,6 @@ CREATE TABLE IF NOT EXISTS `app juventud`.`usuario` (
   `usuario` VARCHAR(16) NOT NULL,
   `email` VARCHAR(255) NULL DEFAULT NULL,
   `contraseña` VARCHAR(32) NOT NULL,
-  `salt` VARCHAR(32) NOT NULL,
   PRIMARY KEY (`idUsuario`),
   INDEX `fk_TipoUsuario_Usuario_idx` (`idTipoUsuario` ASC) VISIBLE,
   INDEX `fk_Status_Usuario_idx` (`idStatus` ASC) VISIBLE,

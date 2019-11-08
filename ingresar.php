@@ -58,21 +58,40 @@ if (isset($_POST["btnIngresar"])) {
         echo "<p class='error' > Debe escribir algo en el password </p>";
     } else {
 
-        // $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+        if($stmt = mysqli_prepare($cn, "SELECT contraseña FROM Usuario WHERE usuario = ?")){
 
-        $stmt = mysqli_prepare($cn, "SELECT * FROM USUARIO WHERE USUARIO = ? AND CONTRASEÑA = ?");
-        mysqli_stmt_bind_param($stmt, 'ss', $username, $password);
-        $result = mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_param($stmt, 's', $username);
+            mysqli_stmt_execute($stmt);
 
-        if (mysqli_stmt_fetch($stmt)) {
-            echo 'correcto';
+            $result = mysqli_stmt_get_result($stmt);
 
-            // abrir variable de sesion y redireccionar a otra pagina
+            $numUsuarios = mysqli_num_rows($result);
 
-        }else{
-            echo "Usuario y/o contraseña incorrectos";
+            if ($numUsuarios>0) {
+
+                $counter = 0;
+
+                while ($row = mysqli_fetch_array($result)) {
+                    if (password_verify($password, $row['contraseña'])) {
+                        echo " CORRECTO ";
+                    }else{
+                        $counter++;
+                        if ($counter == $numUsuarios) {
+
+                            // depuracion ¿?
+                            echo $counter . "      ". $numUsuarios . "<br>";
+                            echo $row['contraseña'] . "     ". $password. "<br>";
+                            echo var_dump($row['contraseña']) . "     ". var_dump($password). " ". var_dump(password_verify($password, $row['contraseña'])) ."<br>";
+                            // fin depuracion ¿?
+
+                            echo "Contraseña incorrecta";
+                        }
+                    }
+                } 
+            }else {
+                echo "Usuario Incorrecto";
+            }            
         }
-
     }
 }
 
