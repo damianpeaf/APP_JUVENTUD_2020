@@ -1,0 +1,112 @@
+*{
+    top: 0;
+    margin: 0;
+}
+
+body{
+    background: linear-gradient(180deg, #0166AC 0%, #0191F6 48.75%, #4DB2F9 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100vw;
+    height: 10vh;
+    position: relative;
+}
+
+header div{
+    color: #ffffff;
+    font-size: 16pt;
+}
+
+#saludo{
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+#cerrar{
+
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+
+    a{
+        text-decoration: none;
+        color: white;
+        margin: 1rem 1rem;
+    }
+}   
+
+main{
+    display: grid;
+    grid-template-columns: 60vw 40vw;
+    grid-template-rows: 90vh;
+    justify-items: center;
+    align-items: center;
+}
+
+.acciones{
+    width: 90%;
+    height: 95%;
+    background: white;
+    border-radius: 30pt;
+    
+    display: grid;
+
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 100%;
+
+    color: black;
+
+    .main-actions{
+        text-align: center;
+
+        #acciones-titulo{
+            margin-top: .5rem;
+        }
+
+        .botones{
+            margin: 1rem 0;
+            display: flex;
+            
+
+            justify-content: space-around;
+
+            button{
+
+                height: 100%;
+                box-sizing: border-box;
+
+                background-color:  #4CAF50;;
+                border-radius: 30pt;
+                padding: .5rem 1rem;
+
+                border-style: none;
+
+                -webkit-transition-duration: 0.4s;
+                transition-duration: 0.4s;
+                color: white;
+
+                border: 2pt solid #4CAF50;
+
+            }
+            button:hover{
+                color: black;
+                background: white;
+                border: 2pt solid #4CAF50;
+            }
+        }
+    }
+}
+
+.revision{
+    width: 90%;
+    height: 95%;
+    background: white;
+    border-radius: 30pt;
+}

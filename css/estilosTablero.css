@@ -1,0 +1,125 @@
+* {
+  top: 0;
+  margin: 0;
+}
+
+body {
+  background: -webkit-gradient(linear, left top, left bottom, from(#0166AC), color-stop(48.75%, #0191F6), to(#4DB2F9));
+  background: linear-gradient(180deg, #0166AC 0%, #0191F6 48.75%, #4DB2F9 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  width: 100vw;
+  height: 10vh;
+  position: relative;
+}
+
+header div {
+  color: #ffffff;
+  font-size: 16pt;
+}
+
+#saludo {
+  margin: 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#cerrar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+#cerrar a {
+  text-decoration: none;
+  color: white;
+  margin: 1rem 1rem;
+}
+
+main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 60vw 40vw;
+      grid-template-columns: 60vw 40vw;
+  -ms-grid-rows: 90vh;
+      grid-template-rows: 90vh;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.acciones {
+  width: 90%;
+  height: 95%;
+  background: white;
+  border-radius: 30pt;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 20% 80%;
+      grid-template-rows: 20% 80%;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  color: black;
+}
+
+.acciones .main-actions {
+  text-align: center;
+}
+
+.acciones .main-actions #acciones-titulo {
+  margin-top: .5rem;
+}
+
+.acciones .main-actions .botones {
+  margin: 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.acciones .main-actions .botones button {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #4CAF50;
+  border-radius: 30pt;
+  padding: .5rem 1rem;
+  border-style: none;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  color: white;
+  border: 2pt solid #4CAF50;
+}
+
+.acciones .main-actions .botones button:hover {
+  color: black;
+  background: white;
+  border: 2pt solid #4CAF50;
+}
+
+.revision {
+  width: 90%;
+  height: 95%;
+  background: white;
+  border-radius: 30pt;
+}
+/*# sourceMappingURL=estilosTablero.css.map */
