@@ -42,7 +42,7 @@ $resultados = mysqli_fetch_array(mysqli_query($cn, "SELECT * FROM Usuario WHERE 
                     <h2>Acciones</h2>
                 </div>
                 <div class="botones">
-                    <button onclick="location.href='#';" >Crear noticia</button>
+                    <button class="button" onclick="location.href='#';" >Crear noticia</button>
                     <button onclick="location.href='#';" >Crear evento</button>
                 </div>
             </div>

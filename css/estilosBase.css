@@ -35,7 +35,7 @@ body {
       grid-template-columns: repeat(10, 1fr);
   -ms-grid-rows: 10vh 90vh 90vh 10vh;
       grid-template-rows: 10vh 90vh 90vh 10vh;
-      grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "noticias noticias noticias noticias noticias noticias noticias noticias noticias scroll" "footer footer footer footer footer footer footer footer footer footer";
+      grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias" "footer footer footer footer footer footer footer footer footer footer";
 }
 
 .phone-header {
@@ -191,7 +191,7 @@ body {
   position: relative;
   -ms-grid-row: 3;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 9;
+  -ms-grid-column-span: 10;
   grid-area: noticias;
   overflow-y: auto;
   overflow-x: hidden;
@@ -268,6 +268,31 @@ body {
   background: #0191F6;
 }
 
+.ir-arriba {
+  display: none;
+  padding: .5rem;
+  background: #0166AC;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 101;
+}
+
+.ir-abajo {
+  padding: .5rem;
+  background: #0166AC;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 101;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 @media screen and (max-width: 760px) {
   .contenedorHeader #logo img {
     margin: 0 1em;
@@ -315,7 +340,7 @@ body {
   body {
     -ms-grid-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc( var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
         grid-template-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc( var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
-        grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "opciones opciones opciones opciones opciones opciones opciones opciones opciones opciones" "noticias noticias noticias noticias noticias noticias noticias noticias noticias deslizar" "footer footer footer footer footer footer footer footer footer footer";
+        grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "opciones opciones opciones opciones opciones opciones opciones opciones opciones opciones" "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias" "footer footer footer footer footer footer footer footer footer footer";
   }
   .contenedorNoticiass {
     -ms-grid-row: 5;

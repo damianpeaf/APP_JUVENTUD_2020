@@ -37,27 +37,32 @@
     <!-- basicos -->
     <link rel="stylesheet" href="css/estilosBase.css">
 
+    <!-- Icono Flecha -->
+    <link rel="stylesheet" href="./fonts/css/fonts.css">
+
 </head>
+
 <body>
 
     <!-- LOADER code -->
 
-<script>
-    $(window).on('load', function() {
-        $('.loader').delay(1000).fadeOut('slow');
-    });
-</script>
+    <script>
+        $(window).on('load', function () {
+            $('.loader').delay(1000).fadeOut('slow');
+        });
+    </script>
 
-        <div class="loader">
-                <div class="loader-inner pacman">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div><span class="tooltip">
-                  <p></p></span>
-            </div>
+    <div class="loader">
+        <div class="loader-inner pacman">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div><span class="tooltip">
+            <p></p>
+        </span>
+    </div>
 
     <header class="contenedorHeader">
         <div class="menu-item" id="logo">
@@ -131,43 +136,52 @@
     </main>
 
     <main class="contenedorNoticias">
-        <div class="header-noticias"> 
+        <span class="ir-arriba icon-arrow-up2"></span>
+        <div class="header-noticias">
             <h1>Noticias</h1>
         </div>
 
         <div class="noticia">
-            <div class="imagen-noticia"><img src="" ></div>
+            <div class="imagen-noticia"><img src=""></div>
             <div class="informacion-noticia">
                 <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt cupiditate inventore nemo veritatis assumenda est eligendi!</div>
-                <p><a href='' > Ver más. </a></p>
+                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus,
+                    deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt
+                    cupiditate inventore nemo veritatis assumenda est eligendi!</div>
+                <p><a href=''> Ver más. </a></p>
             </div>
         </div>
 
         <div class="noticia">
-            <div class="imagen-noticia"><img src="" ></div>
+            <div class="imagen-noticia"><img src=""></div>
             <div class="informacion-noticia">
                 <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt cupiditate inventore nemo veritatis assumenda est eligendi!</div>
-                <p><a href='' > Ver más. </a></p>
-            </div>
-        </div>
-        
-        <div class="noticia">
-            <div class="imagen-noticia"><img src="" ></div>
-            <div class="informacion-noticia">
-                <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt cupiditate inventore nemo veritatis assumenda est eligendi!</div>
-                <p><a href='' > Ver más. </a></p>
+                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus,
+                    deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt
+                    cupiditate inventore nemo veritatis assumenda est eligendi!</div>
+                <p><a href=''> Ver más. </a></p>
             </div>
         </div>
 
         <div class="noticia">
-            <div class="imagen-noticia"><img src="" ></div>
+            <div class="imagen-noticia"><img src=""></div>
             <div class="informacion-noticia">
                 <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt cupiditate inventore nemo veritatis assumenda est eligendi!</div>
-                <p><a href='' > Ver más. </a></p>
+                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus,
+                    deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt
+                    cupiditate inventore nemo veritatis assumenda est eligendi!</div>
+                <p><a href=''> Ver más. </a></p>
+            </div>
+        </div>
+
+        <div class="noticia">
+            <div class="imagen-noticia"><img src=""></div>
+            <div class="informacion-noticia">
+                <div class="titulo-noticia"> lorem </div>
+                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus,
+                    deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt
+                    cupiditate inventore nemo veritatis assumenda est eligendi!</div>
+                <p><a href=''> Ver más. </a></p>
             </div>
         </div>
 
@@ -190,6 +204,13 @@
                     center: 'title',
                     right: 'month,basicWeek,basicDay, next'
                 },
+
+                footer: {
+                    left: '',
+                    center: '',
+                    right: ''
+                },
+
                 themeSystem: 'standard',
 
                 dayClick: function (date, jsEvent, view) {
@@ -215,9 +236,47 @@
                 }
 
             });
+
+            // CREAR BOTON EN FOOTER
+
+            $('.fc-footer-toolbar > .fc-center').append("<span class='ir-abajo icon-arrow-down2'></span>");
+
+            // BOTON IR ARRIBA
+
+            $('.ir-arriba').click(function () {
+                $('body, html').animate({
+                    scrollTop: '0px'
+                }, 750);
+            });
+
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 0) {
+                    $('.ir-arriba').slideDown(500);
+                } else {
+                    $('.ir-arriba').slideUp(500);
+                }
+            });
+
+            // BOTON IR ABAJO
+
+            $('.ir-abajo').click(function () {
+                $('body, html').animate({
+                    scrollTop: $(document).height()
+                }, 750);
+            });
+
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 0) {
+                    $('.ir-abajo').slideUp(500);
+                } else {
+                    $('.ir-abajo').slideDown(500);
+                }
+            });
+
         });
+
     </script>
-    
+
     <script src="./js/resize_vh.js""></script>
 
 </body>

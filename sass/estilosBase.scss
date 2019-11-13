@@ -32,7 +32,7 @@ body {
   grid-template-areas:
     "nav nav nav nav nav nav nav nav nav nav"
     "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario"
-    "noticias noticias noticias noticias noticias noticias noticias noticias noticias scroll"
+    "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias"
     "footer footer footer footer footer footer footer footer footer footer";
 }
 
@@ -206,6 +206,30 @@ body {
 .contenedorFooter {
   grid-area: footer;
   background: $secondaryColor;
+}
+
+.ir-arriba {
+	display:none;
+	padding:.5rem;
+	background: $darkSecondaryColor;
+	font-size:20px;
+	color:#fff;
+	cursor:pointer;
+	position: fixed;
+	bottom:20px;
+  right:20px;
+  z-index: 101;
+}
+
+.ir-abajo {
+	padding: .5rem;
+	background: $darkSecondaryColor;
+	font-size:20px;
+	color:#fff;
+	cursor:pointer;
+  z-index: 101;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 @import "estilosBaseResponsive.scss";
