@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 *{
     top: 0;
     margin: 0;
@@ -8,6 +10,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
 }
 
 header{
@@ -107,6 +110,36 @@ main{
             }
         }
     }
+
+    .publicacion{
+        display: grid;
+        grid-template-rows: 1rem repeat(2, 1fr);
+        
+        .titulo{
+            text-align: center;
+        }
+
+        .publicacion-noticias{
+            padding: 1rem;   
+            
+            .autor{
+                color: blue;
+            }
+
+            .categoria{
+                color: red;
+            }
+
+            .contenido{
+                color: black;
+            }
+        }
+
+        .publicacion-eventos{
+            @extend .publicacion-noticias;
+        }
+    }
+       
 }
 
 .revision{
@@ -114,4 +147,7 @@ main{
     height: 95%;
     background: white;
     border-radius: 30pt;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
 }
+

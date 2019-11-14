@@ -21,7 +21,7 @@ if (isset($_POST["btnIngresar"])) {
         $error = "Debe escribir algo en el campo password*";
     } else {
 
-        if ($stmt = mysqli_prepare($cn, "SELECT idUsuario, contraseña FROM Usuario WHERE usuario = ?")) {
+        if ($stmt = mysqli_prepare($cn, "SELECT idUsuario, contraseña, idTipoUsuario FROM Usuario WHERE usuario = ?")) {
 
             mysqli_stmt_bind_param($stmt, 's', $username);
             mysqli_stmt_execute($stmt);
@@ -38,8 +38,21 @@ if (isset($_POST["btnIngresar"])) {
                     if (password_verify($password, $row['contraseña'])) {
                         session_start();
 
-                        $_SESSION['userId'] = $row['idUsuario'];
-                        header("Location: tablero.php");
+                        if ($row['idTipoUsuario']==1) {
+
+                            $_SESSION['userId'] = $row['idUsuario'];
+                            header("Location: tableroA.php");
+
+                        }elseif ($row['idTipoUsuario']==2) {
+
+                            $_SESSION['userId'] = $row['idUsuario'];
+                            header("Location: tableroC.php");
+
+                        }else{
+                            echo "<script> alert('Error de autenticacion'); window.location.href='./ingresar.php'; </script>";
+                        }
+
+                        
                     } else {
                         $counter++;
                         if ($counter == $numUsuarios) {
