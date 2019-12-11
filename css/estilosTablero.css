@@ -135,6 +135,7 @@ main {
 
 .acciones .publicacion .publicacion-noticias, .acciones .publicacion .publicacion-eventos {
   padding: 1rem;
+  position: relative;
 }
 
 .acciones .publicacion .publicacion-noticias .autor, .acciones .publicacion .publicacion-eventos .autor {
@@ -147,6 +148,18 @@ main {
 
 .acciones .publicacion .publicacion-noticias .contenido, .acciones .publicacion .publicacion-eventos .contenido {
   color: black;
+}
+
+.acciones .publicacion .publicacion-noticias .datos-publicacion, .acciones .publicacion .publicacion-eventos .datos-publicacion {
+  padding: 1rem;
+}
+
+.acciones .publicacion .publicacion-noticias .datos-publicacion > p, .acciones .publicacion .publicacion-eventos .datos-publicacion > p {
+  text-align: justify;
+}
+
+.acciones .publicacion .publicacion-noticias .datos-publicacion > p a, .acciones .publicacion .publicacion-eventos .datos-publicacion > p a {
+  float: right;
 }
 
 .revision {

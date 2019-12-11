@@ -120,7 +120,8 @@ main{
         }
 
         .publicacion-noticias{
-            padding: 1rem;   
+            padding: 1rem;
+            position: relative;   
             
             .autor{
                 color: blue;
@@ -133,11 +134,23 @@ main{
             .contenido{
                 color: black;
             }
+
+            .datos-publicacion{
+                padding: 1rem;
+            }
+
+            .datos-publicacion>p{
+                text-align: justify;
+                a{
+                    float: right;
+                }
+            }
         }
 
         .publicacion-eventos{
             @extend .publicacion-noticias;
         }
+
     }
        
 }
