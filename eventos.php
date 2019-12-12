@@ -1,7 +1,7 @@
 <?php
 
     // header('Content-Type: application/json');
-    $cn = mysqli_connect('localhost', 'root', '1234', 'app juventud', '3307');
+    include './php/conexion.php';
     
     $res = mysqli_query($cn, 'SELECT * FROM evento');
     $eventos = mysqli_fetch_all($res, MYSQLI_ASSOC);
