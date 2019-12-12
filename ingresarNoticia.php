@@ -6,12 +6,9 @@ include './php/validacionUsuario.php';
 if ($userId != null && $userId != '') {
 
     $resultados1 = mysqli_fetch_array(mysqli_query($cn, "SELECT * FROM Usuario WHERE idUsuario = '" . $userId . "' "));
-    $verificacion = $resultados1['idTipoUsuario'] == 1;
+    $verificacion = $resultados1['idTipoUsuario'] == 1 || $resultados1['idTipoUsuario'] == 2;
 
     if ($verificacion) {
-
-        $ultimasNoticiasPublicadas = mysqli_query($cn, "SELECT * FROM post where idStatus = 1 order by idPost limit 6");
-        $ultimasEventosPublicados = mysqli_query($cn, "SELECT * FROM evento where idStatus = 1 order by idEvento limit 6");
 
         if (isset($_POST["btn"])) {
             $idStatus = 2;
@@ -24,7 +21,7 @@ if ($userId != null && $userId != '') {
 
             $archivosPermitidos = array('image/png', 'image/jpeg', 'application/pdf', 'application/msword', 'application/vnd.ms-powerpoint');
 
-            $pesoMaximo = 50000; //en KB
+            $pesoMaximo = 5000; //en KB
 
             foreach ($_FILES["archivo"]['tmp_name'] as $key => $tmp_name) {
 
@@ -65,20 +62,22 @@ if ($userId != null && $userId != '') {
             if (!empty($titulo)) {
                 if (!empty($contenido)) {
                     if (strlen($titulo) <= 45) {
+                        if ($idCategoria >= 1 && $idCategoria <= 4) {
 
-                        $stmt = mysqli_prepare($cn, "INSERT INTO Post (idStatus, idUsuario, idCategoria, idPost, titulo, contenido) values (?, ?, ?, ?, ?, ?) ");
+                            $stmt = mysqli_prepare($cn, "INSERT INTO Post (idStatus, idUsuario, idCategoria, idPost, titulo, contenido) values (?, ?, ?, ?, ?, ?) ");
 
-                        mysqli_stmt_bind_param($stmt, 'iiiiss', $idStatus, $idUsuario, $idCategoria, $idPost, $titulo, $contenido);
-                        if (mysqli_stmt_execute($stmt)) {
-                            echo "<script> alert('Post ingresado, esperando revision'); </script>";
+                            mysqli_stmt_bind_param($stmt, 'iiiiss', $idStatus, $idUsuario, $idCategoria, $idPost, $titulo, $contenido);
+                            if (mysqli_stmt_execute($stmt)) {
+                                echo "<script> alert('Post ingresado, esperando revision'); </script>";
+                            } else {
+                                echo "<script> alert('Hubo un error'); </script>";
+                            }
                         } else {
-                            echo "<script> alert('Hubo un error'); </script>";
+                            echo "<script> alert('Categoria Inválida'); </script>";
                         }
-
                     } else {
                         echo "<script> alert('El título debe contener menos de 45 caracteres'); </script>";
                     }
-
                 } else {
                     echo "<script> alert('Contenido vacío'); </script>";
                 }
@@ -105,25 +104,25 @@ if ($userId != null && $userId != '') {
 
 <body>
     <form action="" method="post" enctype="multipart/form-data">
-        <h2>Crear Noticia</h1>
-            <p>
-                Categoria
-                <select name="categoria">
-                    <option value="1">Ciencias</option>
-                    <option value="2">Deportes</option>
-                    <option value="3">Religión</option>
-                    <option value="4">Arte</option>
-                </select>
-            </p>
-            <p>Título <input type="text" name="titulo" placeholder="Título"></p>
-            <p>Contenido</p>
-            <p><textarea name="contenido" cols="30" rows="10"
-                    placeholder="El contenido de la noticia va aquí"></textarea></p>
+        <h2>Crear Noticia</h2>
+        <p>
+            Categoria
+            <select name="categoria">
+                <option value="1">Ciencias</option>
+                <option value="2">Deportes</option>
+                <option value="3">Religión</option>
+                <option value="4">Arte</option>
+            </select>
+        </p>
+        <p>Título <input type="text" name="titulo" placeholder="Título"></p>
+        <p>Contenido</p>
+        <p><textarea name="contenido" cols="30" rows="10" placeholder="El contenido de la noticia va aquí"></textarea>
+        </p>
 
-            <h4>Cargar Archivos</h4>
-            <p>Archivos <input type="file" name="archivo[]" multiple="" accept=".jpg, .png,.pdf, .pptx"></p>
+        <h4>Cargar Archivos</h4>
+        <p>Archivos <input type="file" name="archivo[]" multiple="" accept=".jpg, .png,.pdf, .pptx"></p>
 
-            <p><input type="submit" name="btn" value="Enviar"></p>
+        <p><input type="submit" name="btn" value="Enviar"></p>
     </form>
 
     <div class="footer">
@@ -131,4 +130,5 @@ if ($userId != null && $userId != '') {
     </div>
 
 </body>
+
 </html>

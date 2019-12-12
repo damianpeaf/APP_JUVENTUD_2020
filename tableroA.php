@@ -43,7 +43,7 @@ if ($userId != null && $userId != '') {
                         </div>
                         <div class="botones">
                             <button class="button" onclick="location.href='./ingresarNoticia.php';">Crear noticia</button>
-                            <button onclick="location.href='#';">Crear evento</button>
+                            <button onclick="location.href='./ingresarEvento.php';">Crear evento</button>
                         </div>
                     </div>
                     <div class="publicacion">

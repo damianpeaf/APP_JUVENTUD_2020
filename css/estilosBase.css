@@ -75,12 +75,14 @@ body {
 .contenedorHeader #logo img {
   margin: 0 1em;
   height: 100%;
+  cursor: pointer;
 }
 
 .contenedorHeader #logo span {
   font-family: "UnispaceW00-Bold";
   color: white;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .contenedorHeader .redes-container {
