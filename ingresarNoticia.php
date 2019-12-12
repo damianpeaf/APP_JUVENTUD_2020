@@ -43,38 +43,47 @@ if ($userId != null && $userId != '') {
                             $target_path = $directorio . '/' . $filename;
 
                             if (!file_exists($target_path)) {
-                                
-                            }else{
-                                echo "<script> alert('El archivo ". $filename ." ya está guardado. Por favor cambie el nombre si cree que es incorrecto'); </script>";
+
+                            } else {
+                                echo "<script> alert('El archivo " . $filename . " ya está guardado. Por favor cambie el nombre si cree que es incorrecto'); </script>";
                             }
 
                             if (move_uploaded_file($source, $target_path)) {
 
-                                echo "<script> alert('El archivo ".$filename." se ha almacenado en forma exitosa'); </script>";
+                                echo "<script> alert('El archivo " . $filename . " se ha almacenado en forma exitosa'); </script>";
                             } else {
                                 echo "<script> alert('Ha ocurrido un error, por favor inténtelo de nuevo.<br>'); </script>";
                             }
                             closedir($dir);
                         }
                     } else {
-                        echo "<script> alert('El archivo ". $filename ." no permitido, o es demasiado pesado'); </script>";
+                        echo "<script> alert('El archivo " . $filename . " no permitido, o es demasiado pesado'); </script>";
                     }
                 }
             }
 
+            if (!empty($titulo)) {
+                if (!empty($contenido)) {
+                    if (strlen($titulo) <= 45) {
 
-            if (strlen($titulo) <= 45) {
+                        $stmt = mysqli_prepare($cn, "INSERT INTO Post (idStatus, idUsuario, idCategoria, idPost, titulo, contenido) values (?, ?, ?, ?, ?, ?) ");
 
-                $stmt = mysqli_prepare($cn, "INSERT INTO Post (idStatus, idUsuario, idCategoria, idPost, titulo, contenido) values (?, ?, ?, ?, ?, ?) ");
+                        mysqli_stmt_bind_param($stmt, 'iiiiss', $idStatus, $idUsuario, $idCategoria, $idPost, $titulo, $contenido);
+                        if (mysqli_stmt_execute($stmt)) {
+                            echo "<script> alert('Post ingresado, esperando revision'); </script>";
+                        } else {
+                            echo "<script> alert('Hubo un error'); </script>";
+                        }
 
-                mysqli_stmt_bind_param($stmt, 'iiiiss', $idStatus, $idUsuario, $idCategoria, $idPost, $titulo, $contenido);
-                if (mysqli_stmt_execute($stmt)) {
-                    echo "<script> alert('Post ingresado, esperando revision'); </script>";
+                    } else {
+                        echo "<script> alert('El título debe contener menos de 45 caracteres'); </script>";
+                    }
+
                 } else {
-                    echo "<script> alert('Hubo un error'); </script>";
+                    echo "<script> alert('Contenido vacío'); </script>";
                 }
             } else {
-                echo "<script> alert('El título debe contener menos de 45 caracteres'); </script>";
+                echo "<script> alert('Título vacío'); </script>";
             }
         }
     }
@@ -89,29 +98,37 @@ if ($userId != null && $userId != '') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ingresar Noticia</title>
+
+    <!-- estilos -->
+    <link rel="stylesheet" href="./css/estilosFormularios.css">
 </head>
 
 <body>
     <form action="" method="post" enctype="multipart/form-data">
-        <p>
-            Categoria
-            <select name="categoria">
-                <option value="1">Ciencias</option>
-                <option value="2">Deportes</option>
-                <option value="3">Religión</option>
-                <option value="4">Arte</option>
-            </select>
-        </p>
-        <p>Título <input type="text" name="titulo"></p>
-        <p>Contenido<textarea name="contenido" cols="30" rows="10"></textarea></p>
+        <h2>Crear Noticia</h1>
+            <p>
+                Categoria
+                <select name="categoria">
+                    <option value="1">Ciencias</option>
+                    <option value="2">Deportes</option>
+                    <option value="3">Religión</option>
+                    <option value="4">Arte</option>
+                </select>
+            </p>
+            <p>Título <input type="text" name="titulo" placeholder="Título"></p>
+            <p>Contenido</p>
+            <p><textarea name="contenido" cols="30" rows="10"
+                    placeholder="El contenido de la noticia va aquí"></textarea></p>
 
-        <h4>Cargar Archivos</h4>
-        <p>Archivos <input type="file" name="archivo[]" multiple="" accept=".jpg, .png,.pdf, .pptx"></p>
+            <h4>Cargar Archivos</h4>
+            <p>Archivos <input type="file" name="archivo[]" multiple="" accept=".jpg, .png,.pdf, .pptx"></p>
 
-        <p><input type="submit" name="btn" value="Enviar"></p>
+            <p><input type="submit" name="btn" value="Enviar"></p>
     </form>
 
-    <button class="button" onclick="location.href='./tableroA.php';">Volver</button>
-</body>
+    <div class="footer">
+        <button onclick="location.href='./tableroA.php';">Volver</button>
+    </div>
 
+</body>
 </html>

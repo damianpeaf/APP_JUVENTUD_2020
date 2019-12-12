@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+* {
+  top: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background: #93cede;
+  background: -webkit-gradient(left top, right top, color-stop(0%, #93cede), color-stop(41%, #75bdd1), color-stop(100%, #49a5bf));
+  background: -webkit-gradient(linear, left top, right top, from(#93cede), color-stop(41%, #75bdd1), to(#49a5bf));
+  background: linear-gradient(to right, #93cede 0%, #75bdd1 41%, #49a5bf 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', endColorstr='#49a5bf', GradientType=1 );
+}
+
+form {
+  width: 80vw;
+  height: 100%;
+  margin: 1em auto;
+  text-align: center;
+  border-radius: 2em;
+  background: #ffffff;
+  padding: 1em;
+}
+
+form h2 {
+  padding: 0.4em 0;
+  font-size: 2em;
+}
+
+form p {
+  padding: 0.5em;
+}
+
+form textarea {
+  width: 70%;
+  min-height: 100px;
+  resize: none;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  color: #666;
+  -webkit-box-shadow: inset 0 0 0.25rem #ddd;
+          box-shadow: inset 0 0 0.25rem #ddd;
+}
+
+form textarea:focus {
+  outline: none;
+  border: 1px solid #d0d0d0;
+  -webkit-box-shadow: inset 0 0 0.5rem #d0d0d0;
+          box-shadow: inset 0 0 0.5rem #d0d0d0;
+}
+
+form textarea[placeholder] {
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+form input[type="submit"] {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 80%;
+  padding: 1%;
+  background: #43d1af;
+  border-bottom: 2px solid #30c29e;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  color: #fff;
+}
+
+form input,
+form select {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  border: 1px gray solid;
+  border-radius: 0.5em;
+  padding: 0.7em;
+}
+
+form input[type="submit"]:hover {
+  background: #2ebc99;
+}
+
+.footer {
+  text-align: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 100vw;
+  height: 5vh;
+}
+
+.footer button {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 80%;
+  padding: 1%;
+  background: tomato;
+  border-bottom: 2px solid red;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  color: #fff;
+}
+
+.footer button:hover {
+  background: #ff9393;
+}
+/*# sourceMappingURL=estilosFormularios.css.map */
