@@ -19,7 +19,7 @@ switch($error){
 
 $tipos = mysqli_fetch_all(mysqli_query($cn, "SELECT * FROM TipoUsuario"), MYSQLI_ASSOC);
 if ($_SESSION['userType']!=1) {//Si no es Administrador
-  header("Location: ingresar.php");
+  header("Location: tableroA.php");
   exit;
 }
 
@@ -35,6 +35,7 @@ if ($_SESSION['userType']!=1) {//Si no es Administrador
 </head>
 <body>
   <form action="./php/crearusuario.inc.php" method="POST">
+    <h2>Crear Usuario</h2>
     <p for="nombre">Usuario:
       <input type="text" name="usuario[nombre]" placeholder="Nombre:" required>
     </p>
@@ -58,5 +59,8 @@ if ($_SESSION['userType']!=1) {//Si no es Administrador
     </div>
     <button type="submit" name="submit">Enviar</button>
   </form>
+  <footer class="footer">
+    <button>Volver</button>
+  </footer>
 </body>
 </html>

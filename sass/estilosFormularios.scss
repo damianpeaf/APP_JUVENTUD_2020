@@ -86,7 +86,7 @@ form {
     font-size: 0.875rem;
   }
 
-  input[type="submit"] {
+  input[type="submit"], button[type="submit"] {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -102,6 +102,7 @@ form {
 
   input,
   select {
+    transition: all .3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -112,7 +113,7 @@ form {
     padding: 0.7em;
   }
 
-  input[type="submit"]:hover {
+  input[type="submit"]:hover, button[type="submit"] {
     background: #2ebc99;
   }
 }
