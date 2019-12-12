@@ -73,7 +73,7 @@ form textarea[placeholder] {
   font-size: 1.2rem;
 }
 
-form input[type="submit"] {
+form input[type="submit"], form button[type="submit"] {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -89,6 +89,8 @@ form input[type="submit"] {
 
 form input,
 form select {
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -99,7 +101,7 @@ form select {
   margin: auto;
 }
 
-form input[type="submit"]:hover {
+form input[type="submit"]:hover, form button[type="submit"] {
   background: #2ebc99;
 }
 
