@@ -1,7 +1,8 @@
 <?php
 
-include './php/conexion.php';
-include './php/validacionUsuario.php';
+require_once './php/conexion.php';
+require_once './php/validacionUsuario.php';
+require_once './php/functions.php';
 
 if ($userId != null && $userId != '') {
 

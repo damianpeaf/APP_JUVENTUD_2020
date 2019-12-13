@@ -1,3 +1,38 @@
+<?php
+require_once './php/functions.php';
+
+$dir = getURL(getcwd());
+$page = (isset($_GET['p'])&&is_numeric($_GET['p']))? $_GET['p'] : 1;
+
+$url = "http://localhost{$dir}/api/posts.php?p={$page}";
+// var_dump($url);
+
+$ch = curl_init($url);//NOTE Tenemos que cambiar esto cuando usemos ya el host
+$options = array(
+    CURLOPT_RETURNTRANSFER => true,         // return web page
+    CURLOPT_HEADER         => false,        // don't return headers
+    CURLOPT_FOLLOWLOCATION => true,         // follow redirects
+    CURLOPT_ENCODING       => "",           // handle all encodings
+    CURLOPT_USERAGENT      => "ELROHIRGT",     // who am i
+    CURLOPT_AUTOREFERER    => true,         // set referer on redirect
+    CURLOPT_CONNECTTIMEOUT => 120,          // timeout on connect
+    CURLOPT_TIMEOUT        => 120,          // timeout on response
+    CURLOPT_MAXREDIRS      => 10,           // stop after 10 redirects
+    CURLOPT_POST            => 0,            // i am sending post data
+    CURLOPT_SSL_VERIFYHOST => 0,            // don't verify ssl
+    CURLOPT_SSL_VERIFYPEER => false,        //
+    CURLOPT_VERBOSE        => 1                //
+);
+curl_setopt_array($ch, $options);
+$content = curl_exec($ch);
+$posts = null;
+$posts = json_decode($content);
+// if ($posts) {
+//     $mensaje = "Un error ocurrió al obtener los posts.";
+// }
+// var_dump($posts);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -145,50 +180,24 @@
             <h1>Noticias</h1>
         </div>
 
-        <div class="noticia">
-            <div class="imagen-noticia"><img src=""></div>
-            <div class="informacion-noticia">
-                <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus,
-                    deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt
-                    cupiditate inventore nemo veritatis assumenda est eligendi!</div>
-                <p><a href=''> Ver más. </a></p>
-            </div>
-        </div>
+        <?php if ($posts): ?>
+            <?php foreach($posts as $post): ?>
+                <div class="noticia">
+                    <div class="imagen-noticia"><img src=""></div>
+                    <div class="informacion-noticia">
+                        <div class="titulo-noticia"><?=$post->titulo?></div>
+                        <div class="contenido-noticia"><?=substr($post->contenido, 0, 500)?></div>
+                        <p><a href=''> Ver más. </a></p>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        <?php endif ?>
+        <!-- TODO: Poder cambiar de página -->
+        <!-- <div class="navNoticias">
+            <?php //for($i=$page;$i<=$page+$maximoPorPagina; $i++): ?>
 
-        <div class="noticia">
-            <div class="imagen-noticia"><img src=""></div>
-            <div class="informacion-noticia">
-                <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus,
-                    deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt
-                    cupiditate inventore nemo veritatis assumenda est eligendi!</div>
-                <p><a href=''> Ver más. </a></p>
-            </div>
-        </div>
-
-        <div class="noticia">
-            <div class="imagen-noticia"><img src=""></div>
-            <div class="informacion-noticia">
-                <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus,
-                    deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt
-                    cupiditate inventore nemo veritatis assumenda est eligendi!</div>
-                <p><a href=''> Ver más. </a></p>
-            </div>
-        </div>
-
-        <div class="noticia">
-            <div class="imagen-noticia"><img src=""></div>
-            <div class="informacion-noticia">
-                <div class="titulo-noticia"> lorem </div>
-                <div class="contenido-noticia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus,
-                    deserunt quidem! Tempora autem sequi asperiores veniam, a explicabo? Ipsam vel fuga ea sunt
-                    cupiditate inventore nemo veritatis assumenda est eligendi!</div>
-                <p><a href=''> Ver más. </a></p>
-            </div>
-        </div>
-
+            <?php //endfor ?>
+        </div> -->
     </main>
 
     <footer class="contenedorFooter">
@@ -196,108 +205,9 @@
             <h1>COPYRIGHT</h1>
         </div>
     </footer>
+    <script src="./js/calendar.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('#calendario').fullCalendar({
-
-                height: 'parent',
-
-                header: {
-                    left: 'prev',
-                    center: 'title',
-                    right: 'month,basicWeek,basicDay, next'
-                },
-
-                footer: {
-                    left: '',
-                    center: '',
-                    right: ''
-                },
-
-                themeSystem: 'standard',
-
-                dayClick: function (date, jsEvent, view) {
-                    // $('#txtFecha').val(date.format())
-                    // $('#formModal').modal();
-                },
-
-                events: './eventos.php',
-
-                eventClick: function (calEvent, jsEvent, view) {
-
-                    $('.modal-title').html(calEvent.title)
-
-                    $('#des').html(calEvent.descripcion)
-
-                    // $('#txtId').val(calEvent.id)
-                    // $('#modal-title').val(calEvent.title)
-
-                    FechaHoraI = calEvent.start._i.split(" ")
-
-
-                    $('#diaI').html(FechaHoraI[0].split("-").reverse().join("-"))
-                    $('#horaI').html(FechaHoraI[1])
-
-                    FechaHoraD = calEvent.end._i.split(" ")
-                    $('#diaF').html(FechaHoraD[0].split("-").reverse().join("-"))
-                    $('#horaF').html(FechaHoraD[1])
-
-                    var color = calEvent.backgroundColor;
-
-                    $('.modal-header').css('background', color);
-
-
-                    // $.post('adjuntos.php', calEvent.adjuntos, function (response) {
-                        
-                    // });
-
-                    $('#infoModal').modal();
-                }
-
-            });
-
-            // CREAR BOTON EN FOOTER
-
-            $('.fc-footer-toolbar > .fc-center').append("<span class='ir-abajo icon-arrow-down2'></span>");
-
-            // BOTON IR ARRIBA
-
-            $('.ir-arriba').click(function () {
-                $('body, html').animate({
-                    scrollTop: '0px'
-                }, 750);
-            });
-
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 0) {
-                    $('.ir-arriba').slideDown(500);
-                } else {
-                    $('.ir-arriba').slideUp(500);
-                }
-            });
-
-            // BOTON IR ABAJO
-
-            $('.ir-abajo').click(function () {
-                $('body, html').animate({
-                    scrollTop: $(document).height()
-                }, 750);
-            });
-
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 0) {
-                    $('.ir-abajo').slideUp(500);
-                } else {
-                    $('.ir-abajo').slideDown(500);
-                }
-            });
-
-        });
-
-    </script>
-
-    <script src="./js/resize_vh.js""></script>
+    <script src="./js/resize_vh.js"></script>
 
 <!-- Modal -->
 <div class=" modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
