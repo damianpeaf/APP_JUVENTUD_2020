@@ -86,15 +86,17 @@ if ($userId != null && $userId != '') {
 
                                         if (isset($arrayAdjuntos)) {
                                             $adjuntos = json_encode($arrayAdjuntos);
+                                        }else{
+                                            $adjuntos = null;
                                         }
 
                                         #FIN CODIGO DE SUBIDA DE ARCHIVOS
 
                                         #codigo de insercion
 
-                                        $stmt = mysqli_prepare($cn, "INSERT INTO evento (idStatus, idUsuario, idCategoria, idEvento, titulo, descripcion, inicia, termina) values (?, ?, ?, ?, ?, ?, ?, ?) ");
+                                        $stmt = mysqli_prepare($cn, "INSERT INTO evento (idStatus, idUsuario, idCategoria, idEvento, titulo, descripcion, inicia, termina, adjuntos) values (?, ?, ?, ?, ?, ?, ?, ?, ?) ");
 
-                                        mysqli_stmt_bind_param($stmt, 'iiiissss', $idStatus, $idUsuario, $idCategoria, $idPost, $titulo, $contenido, $inicio, $final);
+                                        mysqli_stmt_bind_param($stmt, 'iiiisssss', $idStatus, $idUsuario, $idCategoria, $idPost, $titulo, $descripcion, $inicio, $final, $adjuntos);
                                         if (mysqli_stmt_execute($stmt)) {
                                             echo "<script> alert('Evento ingresado, esperando revision'); </script>";
                                         } else {

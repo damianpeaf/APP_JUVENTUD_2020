@@ -19,7 +19,10 @@
             "end"=>$evento['termina'],
             "title"=>$evento['titulo'],
             "editable"=>false,
-            "backgroundColor"=>$colores[$evento['idCategoria']-1]['color']
+            "backgroundColor"=>$colores[$evento['idCategoria']-1]['color'],
+
+            "descripcion"=>$evento['descripcion'],
+            "adjuntos" => $evento['adjuntos']
         ];
 
     }

@@ -75,6 +75,8 @@ if ($userId != null && $userId != '') {
                 
                             if (isset($arrayAdjuntos)) {
                                 $adjuntos = json_encode($arrayAdjuntos);
+                            }else{
+                                $adjuntos = null;
                             }
 
                             #FIN CODIGO DE SUBIDA DE ARCHIVOS
