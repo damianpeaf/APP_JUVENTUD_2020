@@ -53,6 +53,34 @@ main{
     align-items: center;
 }
 
+.publicacion-noticias{
+    padding: 1rem;
+    position: relative;   
+    
+    .autor{
+        color: blue;
+    }
+
+    .categoria{
+        color: red;
+    }
+
+    .contenido{
+        color: black;
+    }
+
+    .datos-publicacion{
+        padding: 1rem;
+    }
+
+    .datos-publicacion>p{
+        text-align: justify;
+        a{
+            float: right;
+        }
+    }
+}
+
 .acciones{
     width: 90%;
     height: 95%;
@@ -64,7 +92,11 @@ main{
     grid-template-rows: 20% 80%;
     grid-template-columns: 100%;
 
+    font-size: .90em;
+
     color: black;
+
+    overflow-y: auto;
 
     .main-actions{
         text-align: center;
@@ -119,34 +151,6 @@ main{
             text-align: center;
         }
 
-        .publicacion-noticias{
-            padding: 1rem;
-            position: relative;   
-            
-            .autor{
-                color: blue;
-            }
-
-            .categoria{
-                color: red;
-            }
-
-            .contenido{
-                color: black;
-            }
-
-            .datos-publicacion{
-                padding: 1rem;
-            }
-
-            .datos-publicacion>p{
-                text-align: justify;
-                a{
-                    float: right;
-                }
-            }
-        }
-
         .publicacion-eventos{
             @extend .publicacion-noticias;
         }
@@ -162,5 +166,42 @@ main{
     border-radius: 30pt;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
+
+    overflow-y: auto;
+
+    .revision-noticias{
+        @extend .publicacion-noticias;
+        padding: .2rem;
+        font-size: .7rem;
+        .titulo{
+            text-align: center;
+            margin-top: .5em;
+        }
+    }
+    
+    .revision-eventos{
+        @extend .revision-noticias
+    }
+
 }
 
+@media screen and (max-width: 768px) {
+
+    main{
+        display: grid;
+        grid-template-columns: 100vw;
+        grid-template-rows: 85vh 90vh;
+        justify-items: center;
+        align-items: center;
+    }
+
+    header div{
+        font-size: 12pt;
+
+    }
+
+    .acciones{
+        font-size: .7em;
+    }
+    
+  }

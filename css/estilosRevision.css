@@ -1,0 +1,51 @@
+img {
+  width: 10em;
+}
+
+.iconoDescargar {
+  width: 2em;
+}
+
+td {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: white !important;
+}
+
+.btn-success {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.btn-danger {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+body {
+  background: #212529 !important;
+}
+
+h2 {
+  text-align: center;
+  color: white !important;
+}
+
+.btn-dark {
+  float: left;
+}
+
+.adjuntos {
+  text-align: center;
+}
+
+.descripcion {
+  text-align: justify;
+}
+
+.titulo {
+  font-weight: bold;
+}
+/*# sourceMappingURL=estilosRevision.css.map */

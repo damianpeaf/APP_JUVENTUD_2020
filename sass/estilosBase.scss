@@ -1,5 +1,8 @@
 @import "includes/colorScheme.scss";
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+
 :root {
   font-size: 12pt;
 }
@@ -62,7 +65,7 @@ body {
       cursor: pointer;
     }
     span {
-      font-family: "UnispaceW00-Bold";
+      font-family: 'Montserrat', sans-serif;
       color: white;
       font-size: 18px;
       cursor: pointer;
@@ -235,3 +238,7 @@ body {
 }
 
 @import "estilosBaseResponsive.scss";
+
+.iconoDescargar{
+  width: 2em;
+}

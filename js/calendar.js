@@ -18,10 +18,10 @@ $(document).ready(function () {
 
       themeSystem: 'standard',
 
-      dayClick: function (date, jsEvent, view) {
-          $('#txtFecha').val(date.format())
-          $('#formModal').modal();
-      },
+    //   dayClick: function (date, jsEvent, view) {
+    //       $('#txtFecha').val(date.format())
+    //       $('#formModal').modal();
+    //   },
 
       events: './api/eventos.php',
 
@@ -52,6 +52,27 @@ $(document).ready(function () {
         // $.post('adjuntos.php', calEvent.adjuntos, function (response) {
             
         // });
+
+        console.log(calEvent.adjuntos);
+
+        $(".descargas").hide();
+
+
+        if (calEvent.adjuntos != null) {
+            var adjuntos = JSON.parse(calEvent.adjuntos)
+            let template  = "";
+
+            for(var k in adjuntos) {
+                
+                var nombre = adjuntos[k];
+                
+                template += `<a href="./docs/${nombre}" download="${nombre}"><img class="iconoDescargar"src="./img/desktop/iconoDescargar.png" >${nombre}</a><br>`
+
+                $(".adjuntos").html(template);
+                $(".descargas").show();
+             }
+                       
+        }
 
         $('#infoModal').modal();
     }

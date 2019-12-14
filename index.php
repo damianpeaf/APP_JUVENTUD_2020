@@ -235,10 +235,17 @@ $posts = json_decode($content);
                     <h5>Final</h5>
                     <span>Fecha: <span id="diaF"></span></span><span>  Hora: <span id="horaF"></span></span>
                 </div>
+                
+                <br>
+
+                <div class="descargas">
+                    <h5>Archivos Adjuntos</h5>
+                    <div class="adjuntos"></div>
+                </div>
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>

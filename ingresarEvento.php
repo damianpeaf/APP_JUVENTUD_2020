@@ -33,11 +33,7 @@ if ($userId != null && $userId != '') {
                     if ($idCategoria >= 1 && $idCategoria <= 4) {
                         if (strlen($titulo) <= 45) {
 
-                            function validateDate($date, $format = 'Y-m-d H:i:s')
-                            {
-                                $d = DateTime::createFromFormat($format, $date);
-                                return $d && $d->format($format) == $date;
-                            }
+                            require_once './php/functions.php';
 
                             if (validateDate($inicio, 'Y-m-d\TH:i')) {
                                 if (validateDate($final, 'Y-m-d\TH:i')) {

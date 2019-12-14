@@ -67,6 +67,35 @@ main {
           align-items: center;
 }
 
+.publicacion-noticias, .acciones .publicacion .publicacion-eventos, .revision .revision-noticias, .revision .revision-eventos {
+  padding: 1rem;
+  position: relative;
+}
+
+.publicacion-noticias .autor, .acciones .publicacion .publicacion-eventos .autor, .revision .revision-noticias .autor, .revision .revision-eventos .autor {
+  color: blue;
+}
+
+.publicacion-noticias .categoria, .acciones .publicacion .publicacion-eventos .categoria, .revision .revision-noticias .categoria, .revision .revision-eventos .categoria {
+  color: red;
+}
+
+.publicacion-noticias .contenido, .acciones .publicacion .publicacion-eventos .contenido, .revision .revision-noticias .contenido, .revision .revision-eventos .contenido {
+  color: black;
+}
+
+.publicacion-noticias .datos-publicacion, .acciones .publicacion .publicacion-eventos .datos-publicacion, .revision .revision-noticias .datos-publicacion, .revision .revision-eventos .datos-publicacion {
+  padding: 1rem;
+}
+
+.publicacion-noticias .datos-publicacion > p, .acciones .publicacion .publicacion-eventos .datos-publicacion > p, .revision .revision-noticias .datos-publicacion > p, .revision .revision-eventos .datos-publicacion > p {
+  text-align: justify;
+}
+
+.publicacion-noticias .datos-publicacion > p a, .acciones .publicacion .publicacion-eventos .datos-publicacion > p a, .revision .revision-noticias .datos-publicacion > p a, .revision .revision-eventos .datos-publicacion > p a {
+  float: right;
+}
+
 .acciones {
   width: 90%;
   height: 95%;
@@ -78,7 +107,9 @@ main {
       grid-template-rows: 20% 80%;
   -ms-grid-columns: 100%;
       grid-template-columns: 100%;
+  font-size: .90em;
   color: black;
+  overflow-y: auto;
 }
 
 .acciones .main-actions {
@@ -133,35 +164,6 @@ main {
   text-align: center;
 }
 
-.acciones .publicacion .publicacion-noticias, .acciones .publicacion .publicacion-eventos {
-  padding: 1rem;
-  position: relative;
-}
-
-.acciones .publicacion .publicacion-noticias .autor, .acciones .publicacion .publicacion-eventos .autor {
-  color: blue;
-}
-
-.acciones .publicacion .publicacion-noticias .categoria, .acciones .publicacion .publicacion-eventos .categoria {
-  color: red;
-}
-
-.acciones .publicacion .publicacion-noticias .contenido, .acciones .publicacion .publicacion-eventos .contenido {
-  color: black;
-}
-
-.acciones .publicacion .publicacion-noticias .datos-publicacion, .acciones .publicacion .publicacion-eventos .datos-publicacion {
-  padding: 1rem;
-}
-
-.acciones .publicacion .publicacion-noticias .datos-publicacion > p, .acciones .publicacion .publicacion-eventos .datos-publicacion > p {
-  text-align: justify;
-}
-
-.acciones .publicacion .publicacion-noticias .datos-publicacion > p a, .acciones .publicacion .publicacion-eventos .datos-publicacion > p a {
-  float: right;
-}
-
 .revision {
   width: 90%;
   height: 95%;
@@ -171,5 +173,37 @@ main {
   display: grid;
   -ms-grid-rows: (1fr)[2];
       grid-template-rows: repeat(2, 1fr);
+  overflow-y: auto;
+}
+
+.revision .revision-noticias, .revision .revision-eventos {
+  padding: .2rem;
+  font-size: .7rem;
+}
+
+.revision .revision-noticias .titulo, .revision .revision-eventos .titulo {
+  text-align: center;
+  margin-top: .5em;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 100vw;
+        grid-template-columns: 100vw;
+    -ms-grid-rows: 85vh 90vh;
+        grid-template-rows: 85vh 90vh;
+    justify-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  header div {
+    font-size: 12pt;
+  }
+  .acciones {
+    font-size: .7em;
+  }
 }
 /*# sourceMappingURL=estilosTablero.css.map */
