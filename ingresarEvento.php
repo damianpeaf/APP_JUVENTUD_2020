@@ -94,7 +94,9 @@ if ($userId != null && $userId != '') {
                                         $stmt = mysqli_prepare($cn, "INSERT INTO evento (idStatus, idUsuario, idCategoria, idEvento, titulo, descripcion, inicia, termina, adjuntos) values (?, ?, ?, ?, ?, ?, ?, ?, ?) ");
 
                                         mysqli_stmt_bind_param($stmt, 'iiiisssss', $idStatus, $idUsuario, $idCategoria, $idPost, $titulo, $descripcion, $inicio, $final, $adjuntos);
-                                        if (mysqli_stmt_execute($stmt)) {
+                                        mysqli_stmt_execute($stmt);
+                                        
+                                        if (mysqli_stmt_affected_rows($stmt) > 0) {
                                             echo "<script> alert('Evento ingresado, esperando revision'); </script>";
                                         } else {
                                             echo "<script> alert('Hubo un error'); </script>";

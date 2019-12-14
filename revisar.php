@@ -42,30 +42,23 @@ if ($userId != null && $userId != '') {
 
     if ($verificacion) {
 
-
-        // TODO: INSERTAR 
-
-        if (isset($_POST["btnAceptar"])) {
-            echo "<script> alert('haz aceptado'); </script>";
-
-            
-        } else if (isset($_POST["btnRechazar"])) {
-            echo "<script> alert('haz rechazado'); </script>";
-        }
-
         if (isset($_GET["idEvento"])) {
 
             $idEvento = $_GET["idEvento"];
 
-            $stmt = mysqli_prepare($cn, "SELECT * FROM evento where idEvento = ?");
+            $stmt = mysqli_prepare($cn, "SELECT * FROM evento where idEvento = ? and idStatus = '2' ");
 
             mysqli_stmt_bind_param($stmt, 'i', $idEvento);
 
             if (mysqli_stmt_execute($stmt)) {
 
-                // CODIGO DE MOSTRAR Y VERFIICAR
-
                 $result = mysqli_stmt_get_result($stmt);
+
+            }
+
+            if (mysqli_num_rows($result) > 0) {
+
+                // CODIGO DE MOSTRAR Y VERFIICAR
 
                 $datosPost = mysqli_fetch_array($result);
 
@@ -147,7 +140,7 @@ if ($userId != null && $userId != '') {
     <?php
 
             } else {
-                echo "<script> alert('Hubo un error'); </script>";
+                echo "<script> alert('Hubo un error, posiblemente este post ya ha sido revisado o no existe');  window.location.href='tableroA.php';</script>";
             }
 
             #FIN COD EVENTOS
@@ -156,22 +149,26 @@ if ($userId != null && $userId != '') {
 
             $idPost = $_GET["idPost"];
 
-            $stmt = mysqli_prepare($cn, "SELECT * FROM post where idPost = ?");
+            $stmt = mysqli_prepare($cn, "SELECT * FROM post where idPost = ? and idStatus = 2 ");
 
             mysqli_stmt_bind_param($stmt, 'i', $idPost);
 
             if (mysqli_stmt_execute($stmt)) {
 
-                // CODIGO DE MOSTRAR Y VERFIICAR
-
                 $result = mysqli_stmt_get_result($stmt);
+
+            }
+
+            if (mysqli_num_rows($result) > 0) {
+
+                // CODIGO DE MOSTRAR Y VERFIICAR
 
                 $datosPost = mysqli_fetch_array($result);
 
                 $query = mysqli_query($cn, "SELECT usuario, email from usuario where idUsuario = '" . $datosPost['idUsuario'] . "' ");
                 $datosAutor = mysqli_fetch_array($query);
 
-                $datosCategoria = mysqli_fetch_array(mysqli_query($cn, "SELECT * FROM categoria where idCategoria = '" . $datosPost['idCategoria'] . "' "))
+                $datosCategoria = mysqli_fetch_array(mysqli_query($cn, "SELECT * FROM categoria where idCategoria = '" . $datosPost['idCategoria'] . "' "));
 
                 ?>
 
@@ -238,19 +235,91 @@ if ($userId != null && $userId != '') {
     <?php
 
             } else {
-                echo "<script> alert('Hubo un error'); </script>";
+                echo "<script> alert('Hubo un error, posiblemente este post ya ha sido revisado o no existe'); window.location.href='tableroA.php'; </script>";
             }
 
         } else {
-            echo "<script> alert('No Tiene autorización'); ";
+            echo "<script> alert('No Tiene autorización'); window.location.href='tableroA.php';";
             exit();
         }
 
     } else {
-        echo "<script> alert('No Tiene autorización'); ";
+        echo "<script> alert('No Tiene autorización'); window.location.href='tableroA.php';";
     }
 } else {
-    echo "<script> alert('No Tiene autorización'); ";
+    echo "<script> alert('No Tiene autorización'); window.location.href='tableroA.php';";
+}
+
+#CODIGO PARA HACER EL UPDATE AL ESTATUS
+
+if (isset($_POST["btnAceptar"])) {
+
+    if (isset($idEvento)) {
+
+        $stmt = mysqli_prepare($cn, "UPDATE evento SET idStatus = '1' where idEvento = ?");
+
+        mysqli_stmt_bind_param($stmt, 'i', $idEvento);
+
+        if (mysqli_stmt_execute($stmt)) {
+            echo "<script> alert('Haz aceptado'); window.location.href='tableroA.php'; </script>";
+        } else {
+            echo "<script> alert('Hubo un error'); window.location.href='tableroA.php'; </script>";
+        }
+
+    } else if (isset($idPost)) {
+        $stmt = mysqli_prepare($cn, "UPDATE post SET idStatus = '1' where idPost = ?");
+
+        mysqli_stmt_bind_param($stmt, 'i', $idPost);
+        mysqli_stmt_execute($stmt);
+
+        if (mysqli_stmt_affected_rows($stmt) > 0) {
+            echo "<script> alert('Haz aceptado'); window.location.href='tableroA.php'; </script>";
+        } else {
+            echo "<script> alert('Hubo un error'); window.location.href='tableroA.php'; </script>";
+        }
+    }
+
+} else if (isset($_POST["btnRechazar"])) {
+
+    $razon = $_POST["mensaje"]; //este campo llegaria como notificacion a el redactor
+
+    echo var_dump($razon);
+
+    if (isset($idEvento)) {
+
+        if (!empty($razon)) {
+
+            $stmt = mysqli_prepare($cn, "UPDATE evento SET idStatus = '3' where idEvento = ?");
+
+            mysqli_stmt_bind_param($stmt, 'i', $idEvento);
+            mysqli_stmt_execute($stmt);
+            if (mysqli_stmt_affected_rows($stmt) > 0) {
+                echo "<script> alert('Haz rechazado'); window.location.href='tableroA.php'; </script>";
+            } else {
+                echo "<script> alert('Hubo un error'); window.location.href='tableroA.php'; </script>";
+            }
+        } else {
+            echo "<script> alert('No haz escrito una razón'); </script>";
+        }
+
+    } else if (isset($idPost)) {
+
+        if (!empty($razon)) {
+
+            $stmt = mysqli_prepare($cn, "UPDATE post SET idStatus = '3' where idPost = ?");
+
+            mysqli_stmt_bind_param($stmt, 'i', $idPost);
+
+            if (mysqli_stmt_execute($stmt)) {
+                echo "<script> alert('Haz rechazado'); window.location.href='tableroA.php'; </script>";
+            } else {
+                echo "<script> alert('Hubo un error'); window.location.href='tableroA.php'; </script>";
+            }
+        } else {
+            echo "<script> alert('No haz escrito una razón'); </script>";
+        }
+    }
+
 }
 
 ?>
@@ -305,14 +374,10 @@ if ($userId != null && $userId != '') {
 
                         <p>Para ello debes llenar el formulario para saber cual es el motivo de tu decisión</p>
 
-                        <textarea name="mensaje" style=" width: 100%; "
-                            placeholder="coloca las razones de la no publicación del post o evento"></textarea>
-
-                    </form>
+                        <textarea name="mensaje" style=" width: 100%; " placeholder="coloca las razones de la no publicación del post o evento"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <form action="" method="post" name="formRechazar">
                         <button type="submit" name="btnRechazar" class="btn btn-primary">Aceptar</button>
                     </form>
                 </div>

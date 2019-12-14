@@ -10,11 +10,11 @@ if ($userId != null && $userId != '') {
 
     if ($verificacion) {
 
-        $ultimasNoticiasPublicadas = mysqli_query($cn, "SELECT * FROM post where idStatus = 1 order by idPost limit 6");
-        $ultimasEventosPublicados = mysqli_query($cn, "SELECT * FROM evento where idStatus = 1 order by idEvento limit 6");
+        $ultimasNoticiasPublicadas = mysqli_query($cn, "SELECT * FROM post where idStatus = 1 order by idPost DESC limit 6");
+        $ultimasEventosPublicados = mysqli_query($cn, "SELECT * FROM evento where idStatus = 1 order by idEvento DESC limit 6");
         
-        $ultimasEventosSinRevisar = mysqli_query($cn, "SELECT * FROM evento where idStatus = 2 order by idEvento limit 15");       
-        $ultimasNoticiasSinRevisar = mysqli_query($cn, "SELECT * FROM post where idStatus = 2 order by idPost limit 15");       
+        $ultimasEventosSinRevisar = mysqli_query($cn, "SELECT * FROM evento where idStatus = 2 order by idEvento DESC limit 15");       
+        $ultimasNoticiasSinRevisar = mysqli_query($cn, "SELECT * FROM post where idStatus = 2 order by idPost DESC limit 15");       
 
         ?>
 

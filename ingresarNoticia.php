@@ -84,7 +84,8 @@ if ($userId != null && $userId != '') {
                             $stmt = mysqli_prepare($cn, "INSERT INTO Post (idStatus, idUsuario, idCategoria, idPost, titulo, contenido, adjuntos) values (?, ?, ?, ?, ?, ?, ?) ");
 
                             mysqli_stmt_bind_param($stmt, 'iiiisss', $idStatus, $idUsuario, $idCategoria, $idPost, $titulo, $contenido, $adjuntos);
-                            if (mysqli_stmt_execute($stmt)) {
+                            mysqli_stmt_execute($stmt);
+                            if (mysqli_stmt_affected_rows($stmt) > 0) {
                                 echo "<script> alert('Post ingresado, esperando revision'); </script>";
                             } else {
                                 echo "<script> alert('Hubo un error'); </script>";
