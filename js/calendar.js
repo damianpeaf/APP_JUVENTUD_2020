@@ -51,9 +51,7 @@ $(document).ready(function () {
 
         // $.post('adjuntos.php', calEvent.adjuntos, function (response) {
             
-        // });
-
-        console.log(calEvent.adjuntos);
+        // }); 
 
         $(".descargas").hide();
 

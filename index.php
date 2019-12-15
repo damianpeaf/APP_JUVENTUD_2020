@@ -223,7 +223,7 @@ $posts = json_decode($content);
         <div class="modal-body">
                 <div class="datos">
                     <h5>Descripción</h5>
-                    <p id="des"></p>
+                    <p id="des" style="color: black !important;"></p>
                 </div>
 
                 <div class="horario">

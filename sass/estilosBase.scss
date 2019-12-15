@@ -195,8 +195,9 @@ body {
 }
 
 .contenedorNoticias::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
+  border-radius: 1rem;
+  background-color: #00d2ff;
+  background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
 }
 
 .contenedorNoticias::-webkit-scrollbar-thumb:hover {
@@ -241,4 +242,13 @@ body {
 
 .iconoDescargar{
   width: 2em;
+}
+
+.modal-body{
+
+  color: black !important;
+
+  h1{
+    color: black !important;
+  }
 }
