@@ -92,11 +92,11 @@ DEFAULT CHARACTER SET = utf8mb4;
 CREATE TABLE IF NOT EXISTS `app juventud`.`evento` (
   `idStatus` INT(10) UNSIGNED NOT NULL,
   `idUsuario` INT(10) UNSIGNED NOT NULL,
-  `idCategoria` INT(10) UNSIGNED NOT NULL,
+  `idCategoria` INT(1) UNSIGNED NOT NULL,
   `idEvento` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `inicia` DATETIME NOT NULL,
   `termina` DATETIME NOT NULL,
-  `fechaDePublicacion` DATETIME NOT NULL,
+  `fechaDePublicacion` DATETIME NOT NULL default current_timestamp,
   `titulo` VARCHAR(45) NOT NULL,
   `descripcion` TEXT NULL DEFAULT NULL,
   `adjuntos` JSON NULL DEFAULT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `app juventud`.`post` (
   `idEvento` INT UNSIGNED NULL,
   `idPost` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(45) NOT NULL,
-  `fechaDePublicacion` DATETIME NOT NULL,
+  `fechaDePublicacion` DATETIME NOT NULL default current_timestamp,
   `contenido` TEXT NOT NULL,
   `adjuntos` JSON NULL DEFAULT NULL,
   PRIMARY KEY (`idPost`),
@@ -153,6 +153,32 @@ CREATE TABLE IF NOT EXISTS `app juventud`.`post` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
+
+-- -----------------------------------------------------
+-- Table `app juventud`.`notificacion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `app juventud`.`notificacion` (
+
+  `idNotificacion` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `leido` bool default false NOT NULL,
+  `idAdmin` INT UNSIGNED NOT NULL,
+  `idCreador` INT UNSIGNED NOT NULL,
+  `idEvento` INT UNSIGNED NULL,
+  `idPost` INT UNSIGNED NULL,
+  `mensaje` TEXT NOT NULL,
+  PRIMARY KEY (`idNotificacion`),
+    FOREIGN KEY (`idAdmin`)
+    REFERENCES `app juventud`.`usuario` (`idUsuario`),
+	FOREIGN KEY (`idCreador`)
+    REFERENCES `app juventud`.`usuario` (`idUsuario`),
+    FOREIGN KEY (`idPost`)
+    REFERENCES `app juventud`.`post` (`idPost`),
+    FOREIGN KEY (`idEvento`)
+    REFERENCES `app juventud`.`evento` (`idEvento`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

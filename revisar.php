@@ -290,13 +290,26 @@ if (isset($_POST["btnAceptar"])) {
         if (!empty($razon)) {
 
             $stmt = mysqli_prepare($cn, "UPDATE evento SET idStatus = '3' where idEvento = ?");
+            $stmt2 = mysqli_prepare($cn, "INSERT INTO notificacion (idNotificacion, idAdmin, idCreador, idEvento, mensaje) VALUES (null, ?, ?, ?, ?)");
 
-            mysqli_stmt_bind_param($stmt, 'i', $idEvento);
-            mysqli_stmt_execute($stmt);
-            if (mysqli_stmt_affected_rows($stmt) > 0) {
-                echo "<script> alert('Haz rechazado'); window.location.href='tableroA.php'; </script>";
+            mysqli_stmt_bind_param($stmt2, 'iiis', $userId, $datosPost['idUsuario'], $idEvento, $razon);
+            mysqli_stmt_execute($stmt2);
+
+            if (mysqli_stmt_affected_rows($stmt2) > 0) {
+                mysqli_stmt_bind_param($stmt, 'i', $idEvento);
+                mysqli_stmt_execute($stmt);
+
+                if (mysqli_stmt_affected_rows($stmt) > 0) {
+                    echo "<script> alert('Haz rechazado'); window.location.href='tableroA.php'; </script>";
+
+                }else{
+                    echo "<script> alert('Hubo un error');</script>";
+                    echo mysqli_error($cn);
+                }
+
             } else {
-                echo "<script> alert('Hubo un error'); window.location.href='tableroA.php'; </script>";
+                echo "<script> alert('Hubo un error');</script>";
+                echo mysqli_error($cn) . " jajaj ";
             }
         } else {
             echo "<script> alert('No haz escrito una razón'); </script>";
@@ -307,13 +320,24 @@ if (isset($_POST["btnAceptar"])) {
         if (!empty($razon)) {
 
             $stmt = mysqli_prepare($cn, "UPDATE post SET idStatus = '3' where idPost = ?");
+            $stmt2 = mysqli_prepare($cn, "INSERT INTO notificacion (idNotificacion, idAdmin, idCreador, idPost, mensaje) VALUES (null, ?, ?, ?, ?)");
 
-            mysqli_stmt_bind_param($stmt, 'i', $idPost);
+            mysqli_stmt_bind_param($stmt2, 'iiis', $userId, $datosPost['idUsuario'], $idPost, $razon);
+            mysqli_stmt_execute($stmt2);
 
-            if (mysqli_stmt_execute($stmt)) {
-                echo "<script> alert('Haz rechazado'); window.location.href='tableroA.php'; </script>";
+            if (mysqli_stmt_affected_rows($stmt2) > 0) {
+                mysqli_stmt_bind_param($stmt, 'i', $idPost);
+                mysqli_stmt_execute($stmt);
+
+                if (mysqli_stmt_affected_rows($stmt) > 0) {
+                    echo "<script> alert('Haz rechazado'); window.location.href='tableroA.php'; </script>";
+
+                }else{
+                    echo "<script> alert('Hubo un error');</script>";
+                }
+
             } else {
-                echo "<script> alert('Hubo un error'); window.location.href='tableroA.php'; </script>";
+                echo "<script> alert('Hubo un error');</script>";
             }
         } else {
             echo "<script> alert('No haz escrito una razón'); </script>";
