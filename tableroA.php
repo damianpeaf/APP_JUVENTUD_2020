@@ -14,7 +14,19 @@ if ($userId != null && $userId != '') {
         $ultimasEventosPublicados = mysqli_query($cn, "SELECT * FROM evento where idStatus = 1 order by idEvento DESC limit 6");
         
         $ultimasEventosSinRevisar = mysqli_query($cn, "SELECT * FROM evento where idStatus = 2 order by idEvento DESC limit 15");       
-        $ultimasNoticiasSinRevisar = mysqli_query($cn, "SELECT * FROM post where idStatus = 2 order by idPost DESC limit 15");       
+        $ultimasNoticiasSinRevisar = mysqli_query($cn, "SELECT * FROM post where idStatus = 2 order by idPost DESC limit 15");
+        
+        $stmt = mysqli_prepare($cn, "SELECT * FROM notificacion where idCreador = ? and leido = false");
+
+        mysqli_stmt_bind_param($stmt, 'i', $userId);
+
+        if (mysqli_execute($stmt)) {
+
+            $resultadoNotificaciones = mysqli_stmt_get_result($stmt);
+
+            $numeroNotificaciones = mysqli_num_rows($resultadoNotificaciones);
+
+        }
 
         ?>
 
@@ -26,6 +38,8 @@ if ($userId != null && $userId != '') {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <title>Tablero de funciones</title>
+            
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
             <!-- Estilos -->
             <link rel="stylesheet" href="./css/estilosTablero.css">
@@ -34,7 +48,37 @@ if ($userId != null && $userId != '') {
 
         <body>
             <header>
-                <div></div>
+                <div id="notificaciones">
+                    <details class="custom-scroll">
+                        <summary><i class="fa fa-bell" style="font-size:24px">  </i> Notificaciones: <span> <?php echo $numeroNotificaciones;  ?> </span></summary>
+
+                        <?php
+
+                            while ($datosNotificaciones = mysqli_fetch_array($resultadoNotificaciones)) {
+
+                                $idPost = $datosNotificaciones['idPost'] ?? null;
+                                $idEvento = $datosNotificaciones['idEvento'] ?? null;
+
+                                if ($idPost != null) {
+                                    $datosPublicacion = mysqli_fetch_array(mysqli_query($cn, "SELECT * FROM post where idPost = $idPost"));
+                                }else if ($idEvento != null) {
+                                    $datosPublicacion = mysqli_fetch_array(mysqli_query($cn, "SELECT * FROM evento where idEvento = $idEvento"));
+                                }
+
+                                 $datosAdmin = mysqli_fetch_array(mysqli_query($cn, "SELECT * FROM usuario where idUsuario = '" . $datosNotificaciones['idAdmin'] . "' "));
+                                 $nombreAdmin = $datosAdmin['usuario'];
+                                 $emailAdmin = $datosAdmin['email'];
+
+
+                                 echo "<br><p> Sobre la publicación: <span class='amarillo'>\"" . $datosPublicacion['titulo'] . "\"</span>. Fue rechazada por: <span class='azul'> " . $nombreAdmin . " </span>. Puedes comunicarte a: <span class='azul'> " . $emailAdmin . "</span></p>";
+                                echo "<details class='razones'><summary>Por la siguiente razón</summary><br>\"" . $datosNotificaciones['mensaje']. "\"</details><hr><br>";
+
+                            }
+
+                        ?>
+
+                    </details>
+                </div>
                 <div id="saludo"> Bienvenido <?php echo $resultados1['usuario'] ?></div>
                 <div id="cerrar"><a href="./php/cerrarSesion.php">Cerrar sesión</a></div>
             </header>
@@ -55,6 +99,7 @@ if ($userId != null && $userId != '') {
                             <h3>Noticias</h3>
                             <div class="datos-publicacion">
                                 <?php
+
                                         while ($res = mysqli_fetch_array($ultimasNoticiasPublicadas)) {
 
                                             $usuario = mysqli_fetch_array(mysqli_query($cn, " SELECT usuario from usuario Where idUsuario = '" . $res['idUsuario'] . "' "));
@@ -99,14 +144,17 @@ if ($userId != null && $userId != '') {
                         <div class="titulo">Hay <?php echo $noticiasSinRevisar; ?> noticias sin revisar</div>
                         <div class="datos-publicacion">
                                 <?php
+    
+
                                         while ($res2 = mysqli_fetch_array($ultimasNoticiasSinRevisar)) {
 
+                                            
                                             $usuario = mysqli_fetch_array(mysqli_query($cn, " SELECT usuario from usuario Where idUsuario = '" . $res2['idUsuario'] . "' "));
                                             $categoria = mysqli_fetch_array(mysqli_query($cn, " SELECT nombre from categoria Where idCategoria = '" . $res2['idCategoria'] . "' "));
 
                                             $idPost = $res2['idPost'];
                                                                                         
-                                            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='revisar.php?idPost=".$idPost."'> VER </a></p>";
+                                            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='revisar.php?idPost=".$idPost."'> Revisar </a></p>";
 
                                         }
 
@@ -126,7 +174,7 @@ if ($userId != null && $userId != '') {
 
                                             $idEvento = $res2['idEvento'];
 
-                                            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='revisar.php?idEvento=".$idEvento."'> VER </a></p>";
+                                            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='revisar.php?idEvento=".$idEvento."'> Revisar </a></p>";
                                         }
 
                                 ?>

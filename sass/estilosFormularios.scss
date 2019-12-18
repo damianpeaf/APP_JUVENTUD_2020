@@ -50,7 +50,10 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', endColorstr='#49a5bf', GradientType=1 );
 }
 
-form {
+.custom-scroll {
+
+  overflow-y: auto;
+  z-index: 100;
   width: 80vw;
   height: 100%;
   margin: 1em auto;
@@ -162,3 +165,10 @@ form {
     background: #ff9393;
   }
 }
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #00d2ff;
+  background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
+}
+

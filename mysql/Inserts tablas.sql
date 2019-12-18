@@ -25,10 +25,9 @@ INSERT INTO `Usuario`(`idStatus`, `idTipoUsuario`, `usuario`, `email`, `contrase
 (1, 2, 'Creador 2', 'damianpeaf@gmail.com', '$2y$10$ivstHSA6tkMpOlgW4q6wa.2fcvOxN8o2aeIZdMIjcjDpf3uR4G3by');
 #password 123
 
-select * from Usuario;
 
-insert into Evento (idStatus, idUsuario, idCategoria, inicia, termina, fechaDePublicacion, titulo, descripcion, idEvento) values (1, 4, 4, '2020-09-07 08:42:17', '2020-09-10 16:42:17', '2020-01-12 18:06:26', 'Implemented 6th generation capability', 'Sed ante. Vivamus tortor. Duis mattis egestas metus.', 1);
-insert into Evento (idStatus, idUsuario, idCategoria, inicia, termina, fechaDePublicacion, titulo, descripcion, idEvento) values (1, 4, 4, '2020-06-28 15:14:33', '2020-07-04 22:14:33', '2020-10-20 13:59:40', 'Secured next generation middleware', 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.
+insert into Evento (idStatus, idUsuario, idCategoria, inicia, termina, fechaDePublicacion, titulo, descripcion, idEvento) values (1, 4, 4, '2020-09-07T08:42:17', '2020-09-10 16:42:17', '2020-01-12 18:06:26', 'Implemented 6th generation capability', 'Sed ante. Vivamus tortor. Duis mattis egestas metus.', 1);
+insert into Evento (idStatus, idUsuario, idCategoria, inicia, termina, fechaDePublicacion, titulo, descripcion, idEvento) values (1, 4, 4, '2020-06-28T15:14:33', '2020-07-04 22:14:33', '2020-10-20 13:59:40', 'Secured next generation middleware', 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.
 
 Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.
 
