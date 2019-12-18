@@ -1,20 +1,17 @@
 <?php
 
-include './php/conexion.php';
-include './php/validacionUsuario.php';
+require_once './php/conexion.php';
+require_once './php/validacionUsuario.php';
 
 if ($userId != null && $userId != '') {
 
-    $resultados1 = mysqli_fetch_array(mysqli_query($cn, "SELECT * FROM Usuario WHERE idUsuario = '" . $userId . "' "));
-    $verificacion = $resultados1['idTipoUsuario'] == 1;
+    if ($_SESSION['idTipoUsuario'] == 1) {
 
-    if ($verificacion) {
-
-        $ultimasNoticiasPublicadas = mysqli_query($cn, "SELECT * FROM post where idStatus = 1 order by idPost DESC limit 6");
-        $ultimasEventosPublicados = mysqli_query($cn, "SELECT * FROM evento where idStatus = 1 order by idEvento DESC limit 6");
+        $ultimasNoticiasPublicadas = mysqli_query($cn, "SELECT * FROM post WHERE idStatus = 1 ORDER BY fechaDePublicacion ASC LIMIT 6");
+        $ultimasEventosPublicados = mysqli_query($cn, "SELECT * FROM evento WHERE idStatus = 1 ORDER BY fechaDePublicacion ASC LIMIT 6");
         
-        $ultimasEventosSinRevisar = mysqli_query($cn, "SELECT * FROM evento where idStatus = 2 order by idEvento DESC limit 15");       
-        $ultimasNoticiasSinRevisar = mysqli_query($cn, "SELECT * FROM post where idStatus = 2 order by idPost DESC limit 15");       
+        $ultimasEventosSinRevisar = mysqli_query($cn, "SELECT * FROM evento WHERE idStatus = 2 ORDER BY fechaDePublicacion ASC LIMIT 15");
+        $ultimasNoticiasSinRevisar = mysqli_query($cn, "SELECT * FROM post WHERE idStatus = 2 ORDER BY fechaDePublicacion ASC LIMIT 15");
 
         ?>
 
@@ -35,7 +32,7 @@ if ($userId != null && $userId != '') {
         <body>
             <header>
                 <div></div>
-                <div id="saludo"> Bienvenido <?php echo $resultados1['usuario'] ?></div>
+                <div id="saludo"> Bienvenido <?php echo $_SESSION['usuario'] ?></div>
                 <div id="cerrar"><a href="./php/cerrarSesion.php">Cerrar sesión</a></div>
             </header>
             <main>

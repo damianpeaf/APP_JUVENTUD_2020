@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$userId = $_SESSION['userId'] ?? null;
+$userId = $_SESSION['idUsuario'] ?? null;
 
 if ($userId == null || $userId == '') {
     echo "<script>

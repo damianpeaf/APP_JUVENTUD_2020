@@ -1,107 +1,101 @@
 <?php
 
-include './php/conexion.php';
-include './php/validacionUsuario.php';
+require_once './php/conexion.php';
+require_once './php/validacionUsuario.php';
 
 if ($userId != null && $userId != '') {
 
-    $resultados1 = mysqli_fetch_array(mysqli_query($cn, "SELECT * FROM Usuario WHERE idUsuario = '" . $userId . "' "));
-    $verificacion = $resultados1['idTipoUsuario'] == 1 || $resultados1['idTipoUsuario'] == 2;
+    if ($_SERVER["REQUEST_METHOD"]=='POST'&&isset($_POST["btn"])) {
+        $idStatus = 2;
+        $idUsuario = $userId;
+        $idCategoria = $_POST["categoria"];
+        $idPost = null;
 
-    if ($verificacion) {
+        $titulo = $_POST["titulo"];
+        $contenido = $_POST["contenido"];
 
-        if (isset($_POST["btn"])) {
-            $idStatus = 2;
-            $idUsuario = $userId;
-            $idCategoria = $_POST["categoria"];
-            $idPost = null;
+        $archivosPermitidos = array('image/png', 'image/jpeg', 'application/pdf', 'application/msword', 'application/vnd.ms-powerpoint');
 
-            $titulo = $_POST["titulo"];
-            $contenido = $_POST["contenido"];
+        $pesoMaximo = 5000; //en KB
 
-            $archivosPermitidos = array('image/png', 'image/jpeg', 'application/pdf', 'application/msword', 'application/vnd.ms-powerpoint');
+        $arrayAdjuntos = [];
 
-            $pesoMaximo = 5000; //en KB
+        if (!empty($titulo)) {
+            if (!empty($contenido)) {
+                if (strlen($titulo) <= 45) {
+                    if ($idCategoria >= 1 && $idCategoria <= 4) {
 
-            $arrayAdjuntos = [];
+                        #CODIGO DE SUBIDA DE ARCHIVOS
 
-            if (!empty($titulo)) {
-                if (!empty($contenido)) {
-                    if (strlen($titulo) <= 45) {
-                        if ($idCategoria >= 1 && $idCategoria <= 4) {
+                        foreach ($_FILES["archivo"]['tmp_name'] as $key => $tmp_name) {
 
-                            #CODIGO DE SUBIDA DE ARCHIVOS
-
-                            foreach ($_FILES["archivo"]['tmp_name'] as $key => $tmp_name) {
-
-                                if ($_FILES["archivo"]["error"][$key]) {
-                                    echo "<script> alert('Error al cargar archivo/s'); </script>";
-                                } else {
-                
-                                    if (in_array($_FILES["archivo"]["type"][$key], $archivosPermitidos) && $_FILES["archivo"]["size"][$key] <= $pesoMaximo * 1024) {
-                                        if ($_FILES["archivo"]["name"][$key]) {
-                                            $filename = $_FILES["archivo"]["name"][$key];
-                                            $source = $_FILES["archivo"]["tmp_name"][$key];
-                
-                                            $directorio = './docs/';
-                
-                                            $dir = opendir($directorio);
-                                            $target_path = $directorio . '/' . $filename;
-                                            $target_path = $directorio . '/' . $idUsuario . "_" . $filename;
-                
-                
-                                            if (!file_exists($target_path)) {
-                
-                                            } else {
-                                                echo "<script> alert('El archivo " . $filename . " ya está guardado. Por favor cambie el nombre si cree que es incorrecto'); </script>";
-                                            }
-                
-                                            if (move_uploaded_file($source, $target_path)) {
-                
-                                                echo "<script> alert('El archivo " . $filename . " se ha almacenado en forma exitosa'); </script>";
-                                                
-                                                $arrayAdjuntos[] =  $idUsuario . "_" . $filename;
-                
-                                            } else {
-                                                echo "<script> alert('Ha ocurrido un error, por favor inténtelo de nuevo.<br>'); </script>";
-                                            }
-                                            closedir($dir);
+                            if ($_FILES["archivo"]["error"][$key]) {
+                                echo "<script> alert('Error al cargar archivo/s'); </script>";
+                            } else {
+            
+                                if (in_array($_FILES["archivo"]["type"][$key], $archivosPermitidos) && $_FILES["archivo"]["size"][$key] <= $pesoMaximo * 1024) {
+                                    if ($_FILES["archivo"]["name"][$key]) {
+                                        $filename = $_FILES["archivo"]["name"][$key];
+                                        $source = $_FILES["archivo"]["tmp_name"][$key];
+            
+                                        $directorio = './docs/';
+            
+                                        $dir = opendir($directorio);
+                                        $target_path = $directorio . '/' . $filename;
+                                        $target_path = $directorio . '/' . $idUsuario . "_" . $filename;
+            
+            
+                                        if (!file_exists($target_path)) {
+            
+                                        } else {
+                                            echo "<script> alert('El archivo " . $filename . " ya está guardado. Por favor cambie el nombre si cree que es incorrecto'); </script>";
                                         }
-                                    } else {
-                                        echo "<script> alert('El archivo " . $filename . " no permitido, o es demasiado pesado'); </script>";
+            
+                                        if (move_uploaded_file($source, $target_path)) {
+            
+                                            echo "<script> alert('El archivo " . $filename . " se ha almacenado en forma exitosa'); </script>";
+                                            
+                                            $arrayAdjuntos[] =  $idUsuario . "_" . $filename;
+            
+                                        } else {
+                                            echo "<script> alert('Ha ocurrido un error, por favor inténtelo de nuevo.<br>'); </script>";
+                                        }
+                                        closedir($dir);
                                     }
+                                } else {
+                                    echo "<script> alert('El archivo " . $filename . " no permitido, o es demasiado pesado'); </script>";
                                 }
                             }
-                
-                            if (isset($arrayAdjuntos)) {
-                                $adjuntos = json_encode($arrayAdjuntos);
-                            }else{
-                                $adjuntos = null;
-                            }
+                        }
+            
+                        if (isset($arrayAdjuntos)) {
+                            $adjuntos = json_encode($arrayAdjuntos);
+                        }else{
+                            $adjuntos = null;
+                        }
 
-                            #FIN CODIGO DE SUBIDA DE ARCHIVOS
+                        #FIN CODIGO DE SUBIDA DE ARCHIVOS
 
-                            $stmt = mysqli_prepare($cn, "INSERT INTO Post (idStatus, idUsuario, idCategoria, idPost, titulo, contenido, adjuntos) values (?, ?, ?, ?, ?, ?, ?) ");
+                        $stmt = mysqli_prepare($cn, "INSERT INTO Post (idStatus, idUsuario, idCategoria, idPost, titulo, contenido, adjuntos) values (?, ?, ?, ?, ?, ?, ?) ");
 
-                            mysqli_stmt_bind_param($stmt, 'iiiisss', $idStatus, $idUsuario, $idCategoria, $idPost, $titulo, $contenido, $adjuntos);
-                            mysqli_stmt_execute($stmt);
-                            if (mysqli_stmt_affected_rows($stmt) > 0) {
-                                echo "<script> alert('Post ingresado, esperando revision'); </script>";
-                            } else {
-                                echo "<script> alert('Hubo un error'); </script>";
-                            }
+                        mysqli_stmt_bind_param($stmt, 'iiiisss', $idStatus, $idUsuario, $idCategoria, $idPost, $titulo, $contenido, $adjuntos);
+                        mysqli_stmt_execute($stmt);
+                        if (mysqli_stmt_affected_rows($stmt) > 0) {
+                            echo "<script> alert('Post ingresado, esperando revision'); </script>";
                         } else {
-                            echo "<script> alert('Categoria Inválida'); </script>";
+                            echo "<script> alert('Hubo un error'); </script>";
                         }
                     } else {
-                        echo "<script> alert('El título debe contener menos de 45 caracteres'); </script>";
+                        echo "<script> alert('Categoria Inválida'); </script>";
                     }
                 } else {
-                    echo "<script> alert('Contenido vacío'); </script>";
+                    echo "<script> alert('El título debe contener menos de 45 caracteres'); </script>";
                 }
             } else {
-                echo "<script> alert('Título vacío'); </script>";
+                echo "<script> alert('Contenido vacío'); </script>";
             }
+        } else {
+            echo "<script> alert('Título vacío'); </script>";
         }
     }
 }

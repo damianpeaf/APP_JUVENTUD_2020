@@ -18,7 +18,7 @@ switch($error){
 }
 
 $tipos = mysqli_fetch_all(mysqli_query($cn, "SELECT * FROM TipoUsuario"), MYSQLI_ASSOC);
-if ($_SESSION['userType']!=1) {//Si no es Administrador
+if ($_SESSION['idTipoUsuario']!=1) {//Si no es Administrador
   header("Location: tableroA.php");
   exit;
 }

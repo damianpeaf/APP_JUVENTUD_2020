@@ -1,6 +1,6 @@
 <?php
 
-include_once './php/ingresar.inc.php';
+require_once './php/ingresar.inc.php';
 
 ?>
 
@@ -27,7 +27,7 @@ include_once './php/ingresar.inc.php';
         </nav>
     </header>
 
-    <form action="ingresar.php" method="post">
+    <form method="post">
 
         <div class="main_container">
             <div class="container">
