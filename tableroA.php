@@ -10,8 +10,11 @@ if ($userId != null && $userId != '') {
 
     if ($verificacion) {
 
-        $ultimasNoticiasPublicadas = mysqli_query($cn, "SELECT * FROM post where idStatus = 1 order by idPost limit 6");
-        $ultimasEventosPublicados = mysqli_query($cn, "SELECT * FROM evento where idStatus = 1 order by idEvento limit 6");
+        $ultimasNoticiasPublicadas = mysqli_query($cn, "SELECT * FROM post where idStatus = 1 order by idPost DESC limit 6");
+        $ultimasEventosPublicados = mysqli_query($cn, "SELECT * FROM evento where idStatus = 1 order by idEvento DESC limit 6");
+        
+        $ultimasEventosSinRevisar = mysqli_query($cn, "SELECT * FROM evento where idStatus = 2 order by idEvento DESC limit 15");       
+        $ultimasNoticiasSinRevisar = mysqli_query($cn, "SELECT * FROM post where idStatus = 2 order by idPost DESC limit 15");       
 
         ?>
 
@@ -76,16 +79,64 @@ if ($userId != null && $userId != '') {
                                             echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='#'> VER </a></p>";
                                         }
 
-                                        ?>
+                                ?>
                             </div>
                             <a href="#">VER TODOS</a>
                         </div>
                     </div>
                 </div>
                 </div>
+
+                <?php 
+
+                    $eventosSinRevisar = mysqli_num_rows(mysqli_query($cn, "SELECT * FROM evento where idStatus = 2"));
+                    $noticiasSinRevisar = mysqli_num_rows(mysqli_query($cn, "SELECT * FROM post where idStatus = 2"));
+
+                ?>
+
                 <div class="revision">
-                    <div class="revision-noticias"></div>
-                    <div class="revision-eventos"></div>
+                    <div class="revision-noticias">
+                        <div class="titulo">Hay <?php echo $noticiasSinRevisar; ?> noticias sin revisar</div>
+                        <div class="datos-publicacion">
+                                <?php
+                                        while ($res2 = mysqli_fetch_array($ultimasNoticiasSinRevisar)) {
+
+                                            $usuario = mysqli_fetch_array(mysqli_query($cn, " SELECT usuario from usuario Where idUsuario = '" . $res2['idUsuario'] . "' "));
+                                            $categoria = mysqli_fetch_array(mysqli_query($cn, " SELECT nombre from categoria Where idCategoria = '" . $res2['idCategoria'] . "' "));
+
+                                            $idPost = $res2['idPost'];
+                                                                                        
+                                            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='revisar.php?idPost=".$idPost."'> VER </a></p>";
+
+                                        }
+
+                                ?>
+                            </div>
+                            <a href="#">VER TODOS</a>
+                        </div>
+
+                        <div class="revision-eventos">
+                        <div class="titulo">Hay <?php echo $eventosSinRevisar; ?> eventos sin revisar</div>
+                        <div class="datos-publicacion">
+                                <?php
+                                        while ($res2 = mysqli_fetch_array($ultimasEventosSinRevisar)) {
+
+                                            $usuario = mysqli_fetch_array(mysqli_query($cn, " SELECT usuario from usuario Where idUsuario = '" . $res2['idUsuario'] . "' "));
+                                            $categoria = mysqli_fetch_array(mysqli_query($cn, " SELECT nombre from categoria Where idCategoria = '" . $res2['idCategoria'] . "' "));
+
+                                            $idEvento = $res2['idEvento'];
+
+                                            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='revisar.php?idEvento=".$idEvento."'> VER </a></p>";
+                                        }
+
+                                ?>
+                            </div>
+                            <a href="#">VER TODOS</a>
+                        </div>
+
+                    </div>
+                    
+                    </div>
                 </div>
             </main>
         </body>

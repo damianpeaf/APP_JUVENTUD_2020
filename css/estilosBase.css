@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 :root {
   font-size: 12pt;
 }
@@ -96,7 +97,7 @@ body {
 }
 
 .contenedorHeader #logo span {
-  font-family: "UnispaceW00-Bold";
+  font-family: 'Montserrat', sans-serif;
   color: white;
   font-size: 18px;
   cursor: pointer;
@@ -488,5 +489,9 @@ body {
   .phone-footer .categorias div:hover {
     background: rgba(255, 255, 255, 0.2);
   }
+}
+
+.iconoDescargar {
+  width: 2em;
 }
 /*# sourceMappingURL=estilosBase.css.map */

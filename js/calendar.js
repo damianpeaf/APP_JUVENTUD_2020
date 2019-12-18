@@ -18,27 +18,64 @@ $(document).ready(function () {
 
       themeSystem: 'standard',
 
-      dayClick: function (date, jsEvent, view) {
-          $('#txtFecha').val(date.format())
-          $('#formModal').modal();
-      },
+    //   dayClick: function (date, jsEvent, view) {
+    //       $('#txtFecha').val(date.format())
+    //       $('#formModal').modal();
+    //   },
 
       events: './api/eventos.php',
 
       eventClick: function (calEvent, jsEvent, view) {
 
-          $('#tituloModal').html(calEvent.title)
+        $('.modal-title').html(calEvent.title)
 
-          $('#txtDescripcion').val(calEvent.descripcion)
-          $('#txtId').val(calEvent.id)
-          $('#txtTitulo').val(calEvent.title)
-          $('#txtColor').val(calEvent.color)
+        $('#des').html(calEvent.descripcion)
 
-          FechaHora = calEvent.start._i.split(" ")
-          $('#txtFecha').val(FechaHora[0])
-          $('#txtHora').val(FechaHora[1])
-          $('#formModal').modal();
-      }
+        // $('#txtId').val(calEvent.id)
+        // $('#modal-title').val(calEvent.title)
+
+        FechaHoraI = calEvent.start._i.split(" ")
+
+
+        $('#diaI').html(FechaHoraI[0].split("-").reverse().join("-"))
+        $('#horaI').html(FechaHoraI[1])
+
+        FechaHoraD = calEvent.end._i.split(" ")
+        $('#diaF').html(FechaHoraD[0].split("-").reverse().join("-"))
+        $('#horaF').html(FechaHoraD[1])
+
+        var color = calEvent.backgroundColor;
+
+        $('.modal-header').css('background', color);
+
+
+        // $.post('adjuntos.php', calEvent.adjuntos, function (response) {
+            
+        // });
+
+        console.log(calEvent.adjuntos);
+
+        $(".descargas").hide();
+
+
+        if (calEvent.adjuntos != null) {
+            var adjuntos = JSON.parse(calEvent.adjuntos)
+            let template  = "";
+
+            for(var k in adjuntos) {
+                
+                var nombre = adjuntos[k];
+                
+                template += `<a href="./docs/${nombre}" download="${nombre}"><img class="iconoDescargar"src="./img/desktop/iconoDescargar.png" >${nombre}</a><br>`
+
+                $(".adjuntos").html(template);
+                $(".descargas").show();
+             }
+                       
+        }
+
+        $('#infoModal').modal();
+    }
 
   });
 

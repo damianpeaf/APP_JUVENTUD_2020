@@ -52,6 +52,9 @@ $mensaje = (is_string($posts))? $posts: false;
     <!-- Icono Flecha -->
     <link rel="stylesheet" href="./fonts/css/fonts.css">
 
+    <!-- Modal -->
+    <link rel="stylesheet" href="./css/estilosModal.css">
+
 </head>
 
 <body>
@@ -78,7 +81,8 @@ $mensaje = (is_string($posts))? $posts: false;
 
     <header class="contenedorHeader">
         <div class="menu-item" id="logo">
-            <img src="./img/desktop/logo.png" onclick="location.href='./index.html';"><span id="logo-nombre" onclick="location.href='./index.html';">PeriódicoDB</span>
+            <img src="./img/desktop/logo.png" onclick="location.href='./index.html';"><span id="logo-nombre"
+                onclick="location.href='./index.html';">PeriódicoDB</span>
         </div>
         <div class="menu-item" id="redes">
             <nav class="redes-container">
@@ -180,7 +184,6 @@ $mensaje = (is_string($posts))? $posts: false;
             <h1>COPYRIGHT</h1>
         </div>
     </footer>
-
     <script src="./js/calendar.js"></script>
     <!-- <script src="">
         function AjaxCall(pag) {
@@ -211,6 +214,48 @@ $mensaje = (is_string($posts))? $posts: false;
     </script> -->
     <script src="./js/resize_vh.js"></script>
 
+<!-- Modal -->
+<div class=" modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                <div class="datos">
+                    <h5>Descripción</h5>
+                    <p id="des"></p>
+                </div>
+
+                <div class="horario">
+                    <h5>Inicio</h5>
+                    <span>Fecha: <span id="diaI"></span></span><span>  Hora: <span id="horaI"></span></span>
+
+                    <br><br>
+
+                    <h5>Final</h5>
+                    <span>Fecha: <span id="diaF"></span></span><span>  Hora: <span id="horaF"></span></span>
+                </div>
+                
+                <br>
+
+                <div class="descargas">
+                    <h5>Archivos Adjuntos</h5>
+                    <div class="adjuntos"></div>
+                </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
 </body>
 
 </html>
