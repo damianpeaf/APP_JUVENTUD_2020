@@ -112,34 +112,51 @@ if ($userId != null && $userId != '') {
 
     <!-- estilos -->
     <link rel="stylesheet" href="./css/estilosFormularios.css">
+
+    <!-- CkEditor -->
+    <script src="./js/librerias/ckeditor/ckeditor.js"></script>
+
 </head>
 
 <body>
-    <form action="" method="post" enctype="multipart/form-data">
-        <h2>Crear Noticia</h2>
-        <p>
-            Categoria
-            <select name="categoria">
-                <option value="1">Ciencias</option>
-                <option value="2">Deportes</option>
-                <option value="3">Religión</option>
-                <option value="4">Arte</option>
-            </select>
-        </p>
-        <p>Título <input type="text" name="titulo" placeholder="Título"></p>
-        <p>Contenido</p>
-        <p><textarea name="contenido" cols="30" rows="10" placeholder="El contenido de la noticia va aquí"></textarea>
-        </p>
+    <div class="custom-scroll">
+        <form action="" method="post" enctype="multipart/form-data">
+            <h2>Crear Noticia</h2>
+            <p>
+                Categoria
+                <select name="categoria">
+                    <option value="1">Ciencias</option>
+                    <option value="2">Deportes</option>
+                    <option value="3">Religión</option>
+                    <option value="4">Arte</option>
+                </select>
+            </p>
+            <p>Título <input type="text" name="titulo" placeholder="Título"></p>
+            <p>Contenido</p>
+            <p>Nota: <span style="font-weight: bold"> NO </span> utilizar colores claros en las letras</p>
+            <p>
+                <textarea name="editor" id="editor" rows="10" cols="80"></textarea>
+            </p>
 
-        <h4>Cargar Archivos</h4>
-        <p>Archivos <input type="file" name="archivo[]" multiple="" accept=".jpg, .png,.pdf, .pptx"></p>
+            <h4>Cargar Archivos</h4>
+            <p>Archivos <input type="file" name="archivo[]" multiple="" accept=".jpg, .png,.pdf, .pptx"></p>
 
-        <p><input type="submit" name="btn" value="Enviar"></p>
-    </form>
+            <p><input type="submit" name="btn" value="Enviar"></p>
+        </form>
+    </div>
 
     <div class="footer">
         <button onclick="location.href='./tableroA.php';">Volver</button>
     </div>
 
+    <script>
+    CKEDITOR.replace('editor', {
+        filebrowserUploadUrl: './php/ckEditorUpload.php',
+        filebrowserUploadMethod: 'form'
+    });
+    </script>
+
+
 </body>
+
 </html>

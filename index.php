@@ -231,7 +231,7 @@ $mensaje = (is_string($posts))? $posts: false;
         <div class="modal-body">
                 <div class="datos">
                     <h5>Descripción</h5>
-                    <p id="des"></p>
+                    <p id="des" style="color: black !important;"></p>
                 </div>
 
                 <div class="horario">

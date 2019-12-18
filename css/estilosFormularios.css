@@ -14,7 +14,9 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', endColorstr='#49a5bf', GradientType=1 );
 }
 
-form {
+.custom-scroll {
+  overflow-y: auto;
+  z-index: 100;
   width: 80vw;
   height: 100%;
   margin: 1em auto;
@@ -24,7 +26,7 @@ form {
   padding: 1em;
 }
 
-form .horario {
+.custom-scroll .horario {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,21 +37,21 @@ form .horario {
       align-content: center;
 }
 
-form .horario input {
+.custom-scroll .horario input {
   margin: auto;
 }
 
-form h2 {
+.custom-scroll h2 {
   padding: 0.4em 0;
   font-size: 2em;
 }
 
-form p {
+.custom-scroll p {
   padding: 0.5em;
   text-align: center;
 }
 
-form textarea {
+.custom-scroll textarea {
   width: 70%;
   min-height: 100px;
   resize: none;
@@ -61,19 +63,19 @@ form textarea {
           box-shadow: inset 0 0 0.25rem #ddd;
 }
 
-form textarea:focus {
+.custom-scroll textarea:focus {
   outline: none;
   border: 1px solid #d0d0d0;
   -webkit-box-shadow: inset 0 0 0.5rem #d0d0d0;
           box-shadow: inset 0 0 0.5rem #d0d0d0;
 }
 
-form textarea[placeholder] {
+.custom-scroll textarea[placeholder] {
   font-style: italic;
   font-size: 1.2rem;
 }
 
-form input[type="submit"], form button[type="submit"] {
+.custom-scroll input[type="submit"], .custom-scroll button[type="submit"] {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -87,8 +89,8 @@ form input[type="submit"], form button[type="submit"] {
   color: #fff;
 }
 
-form input,
-form select {
+.custom-scroll input,
+.custom-scroll select {
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -101,11 +103,11 @@ form select {
   margin: auto;
 }
 
-form input[type="submit"]:hover, form button[type="submit"] {
+.custom-scroll input[type="submit"]:hover, .custom-scroll button[type="submit"] {
   background: #2ebc99;
 }
 
-form input[type="file"] {
+.custom-scroll input[type="file"] {
   width: 35%;
 }
 
@@ -133,5 +135,12 @@ form input[type="file"] {
 
 .footer button:hover {
   background: #ff9393;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #00d2ff;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#00d2ff), to(#3a7bd5));
+  background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
 }
 /*# sourceMappingURL=estilosFormularios.css.map */

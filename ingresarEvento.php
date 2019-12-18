@@ -20,7 +20,7 @@ if ($userId != null && $userId != '') {
             $final = $_POST["final"];
 
             $titulo = $_POST["titulo"];
-            $descripcion = $_POST["descripcion"];
+            $descripcion = $_POST["editor"];
 
             $archivosPermitidos = array('image/png', 'image/jpeg', 'application/pdf', 'application/msword', 'application/vnd.ms-powerpoint');
 
@@ -140,11 +140,17 @@ if ($userId != null && $userId != '') {
     <!-- estilos -->
     <link rel="stylesheet" href="./css/estilosFormularios.css">
 
+    <!-- CkEditor -->
+    <script src="./js/librerias/ckeditor/ckeditor.js"></script>
+
+
 </head>
 
 <body>
-    <form action="" method="post" enctype="multipart/form-data">
-        <h2>Crear Evento</h2>
+
+    <div class="custom-scroll">
+        <form action="" method="post" enctype="multipart/form-data">
+            <h2>Crear Evento</h2>
             <p>
                 Categoria
                 <select name="categoria">
@@ -156,11 +162,14 @@ if ($userId != null && $userId != '') {
             </p>
             <p>Título <input type="text" name="titulo" placeholder="Título"></p>
             <p>Descripción</p>
-            <p><textarea name="descripcion" cols="30" rows="10" placeholder="La descripción del evento va aquí"></textarea></p>
+            <p>Nota: <span style="font-weight: bold"> NO </span> utilizar colores claros en las letras</p>
+            <p>
+                <textarea name="editor" id="editor" rows="10" cols="80"></textarea>
+            </p>
 
-            <p><label for="inicio"> Inicio </label><input type="datetime-local"  id="inicio" name="inicio"></p>
+            <p><label for="inicio"> Inicio </label><input type="datetime-local" id="inicio" name="inicio"></p>
 
-            <p><label for="clockpicker1"> Finalización </label><input type="datetime-local"  id="final" name="final"></p>
+            <p><label for="clockpicker1"> Finalización </label><input type="datetime-local" id="final" name="final"></p>
 
             <br>
 
@@ -168,13 +177,20 @@ if ($userId != null && $userId != '') {
             <p>Archivos<input type="file" name="archivo[]" multiple="" accept=".jpg, .png,.pdf, .pptx"></p>
 
             <p><input type="submit" name="btn" value="Enviar"></p>
-    </form>
+        </form>
+    </div>
 
     <div class="footer">
         <button onclick="location.href='./tableroA.php';">Volver</button>
     </div>
 
-</body>
-</html>
+    <script>
+    CKEDITOR.replace('editor', {
+        filebrowserUploadUrl: './php/ckEditorUpload.php',
+        filebrowserUploadMethod: 'form'
+    });
+    </script>
 
-    
+</body>
+
+</html>

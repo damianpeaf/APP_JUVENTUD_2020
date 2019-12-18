@@ -34,6 +34,7 @@ if ($_SESSION['idTipoUsuario']!=1) {//Si no es Administrador
   <link rel="stylesheet" href="./css/estilosFormularios.css">
 </head>
 <body>
+<div class="custom-scroll">
   <form action="./php/crearusuario.inc.php" method="POST">
     <h2>Crear Usuario</h2>
     <p for="nombre">Usuario:
@@ -59,6 +60,7 @@ if ($_SESSION['idTipoUsuario']!=1) {//Si no es Administrador
     </div>
     <button type="submit" name="submit">Enviar</button>
   </form>
+</div>
   <footer class="footer">
     <button>Volver</button>
   </footer>
