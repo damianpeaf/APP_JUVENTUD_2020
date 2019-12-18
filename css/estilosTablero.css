@@ -26,7 +26,12 @@ header {
   position: relative;
 }
 
-header div details[open] {
+header > div {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+header > div > details[open] {
   background: rgba(1, 102, 172, 0.7);
   -webkit-box-shadow: 9px 3px 10px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 9px 3px 10px 0px rgba(0, 0, 0, 0.75);
@@ -35,13 +40,29 @@ header div details[open] {
   height: 100vh;
 }
 
-header div details {
-  height: 10vh;
+header > div > details[open] details {
+  text-align: justify;
+  display: inline-block;
+  font-size: .7em;
+  height: 100%;
+  width: 90%;
+  padding: 0 1em;
+}
+
+header > div > details[open] details summary {
+  text-align: center;
+  display: inline-block;
+  height: auto;
+  word-wrap: break-word;
+}
+
+header > div > details {
+  height: 5vh;
   width: 100%;
   z-index: -1;
 }
 
-header div details summary {
+header > div > details summary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -55,7 +76,7 @@ header div details summary {
   height: 10vh;
 }
 
-header div details summary span {
+header > div > details summary span {
   background: #777774;
   margin: 0 1em;
   border-radius: 1em;
@@ -67,22 +88,17 @@ header div details summary span {
   font-weight: bold;
 }
 
-header div details > p {
-  padding: 1em;
+header > div > details > p {
+  padding: 0 1em;
   font-size: 0.7em;
 }
 
-header div details > p .amarillo {
+header > div > details > p .amarillo {
   color: yellow;
 }
 
-header div details > p .azul {
+header > div > details > p .azul {
   color: #a8daf4;
-}
-
-header div {
-  color: #ffffff;
-  font-size: 16px;
 }
 
 #saludo {

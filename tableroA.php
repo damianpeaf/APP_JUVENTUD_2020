@@ -70,7 +70,8 @@ if ($userId != null && $userId != '') {
                                  $emailAdmin = $datosAdmin['email'];
 
 
-                                 echo "<br><p> Sobre la publicación: <span class='amarillo'>\"" . $datosPublicacion['titulo'] . "\"</span>. Fue rechazada por: <span class='azul'> " . $nombreAdmin . " </span>. Por la siguiente razón: <span class='amarillo'>\"" . $datosNotificaciones['mensaje']. "\"</span>. Puedes comunicarte a: <span class='azul'> " . $emailAdmin . "</span></p><br>";
+                                 echo "<br><p> Sobre la publicación: <span class='amarillo'>\"" . $datosPublicacion['titulo'] . "\"</span>. Fue rechazada por: <span class='azul'> " . $nombreAdmin . " </span>. Puedes comunicarte a: <span class='azul'> " . $emailAdmin . "</span></p>";
+                                echo "<details class='razones'><summary>Por la siguiente razón</summary><br>\"" . $datosNotificaciones['mensaje']. "\"</details><hr><br>";
 
                             }
 
@@ -153,7 +154,7 @@ if ($userId != null && $userId != '') {
 
                                             $idPost = $res2['idPost'];
                                                                                         
-                                            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='revisar.php?idPost=".$idPost."'> VER </a></p>";
+                                            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='revisar.php?idPost=".$idPost."'> Revisar </a></p>";
 
                                         }
 
@@ -173,7 +174,7 @@ if ($userId != null && $userId != '') {
 
                                             $idEvento = $res2['idEvento'];
 
-                                            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='revisar.php?idEvento=".$idEvento."'> VER </a></p>";
+                                            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='revisar.php?idEvento=".$idEvento."'> Revisar </a></p>";
                                         }
 
                                 ?>

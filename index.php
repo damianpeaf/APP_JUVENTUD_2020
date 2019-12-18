@@ -2,35 +2,12 @@
 require_once './php/functions.php';
 
 $dir = getURL(getcwd());
-$page = (isset($_GET['p'])&&is_numeric($_GET['p']))? $_GET['p'] : 1;
+$page = (isset($_GET['p'])&&is_numeric($_GET['p'])&&$_GET['p']>0)? $_GET['p'] : 1;
 
-$url = "http://localhost{$dir}/api/posts.php?p={$page}";
-// var_dump($url);
-
-$ch = curl_init($url);//NOTE Tenemos que cambiar esto cuando usemos ya el host
-$options = array(
-    CURLOPT_RETURNTRANSFER => true,         // return web page
-    CURLOPT_HEADER         => false,        // don't return headers
-    CURLOPT_FOLLOWLOCATION => true,         // follow redirects
-    CURLOPT_ENCODING       => "",           // handle all encodings
-    CURLOPT_USERAGENT      => "ELROHIRGT",     // who am i
-    CURLOPT_AUTOREFERER    => true,         // set referer on redirect
-    CURLOPT_CONNECTTIMEOUT => 120,          // timeout on connect
-    CURLOPT_TIMEOUT        => 120,          // timeout on response
-    CURLOPT_MAXREDIRS      => 10,           // stop after 10 redirects
-    CURLOPT_POST            => 0,            // i am sending post data
-    CURLOPT_SSL_VERIFYHOST => 0,            // don't verify ssl
-    CURLOPT_SSL_VERIFYPEER => false,        //
-    CURLOPT_VERBOSE        => 1                //
-);
-curl_setopt_array($ch, $options);
-$content = curl_exec($ch);
+$url = "http://localhost/{$dir}/api/posts.php";//NOTE Tenemos que cambiar esto cuando usemos ya el host
 $posts = null;
-$posts = json_decode($content);
-// if ($posts) {
-//     $mensaje = "Un error ocurrió al obtener los posts.";
-// }
-// var_dump($posts);
+$posts = apiCall("{$url}?p={$page}", "GET");
+$mensaje = (is_string($posts))? $posts: false;
 
 ?>
 <!DOCTYPE html>
@@ -86,7 +63,7 @@ $posts = json_decode($content);
 
     <script>
         $(window).on('load', function () {
-            $('.loader').delay(1000).fadeOut('slow');
+            $('.loader').delay(20).fadeOut('slow');//Pienso que deberia ser un poco menos el tiempo que se muestre esto
         });
     </script>
 
@@ -174,13 +151,16 @@ $posts = json_decode($content);
         <div class="inclusion-calendario" id="calendario"></div>
     </main>
 
-    <main class="contenedorNoticias">
+    <main class="contenedorNoticias" id="noticias">
         <span class="ir-arriba icon-arrow-up2"></span>
         <div class="header-noticias">
-            <h1>Noticias</h1>
+            <a href="?p=<?=$page-1?>#noticias" class="button"><</a>
+            <a name="noticias"><h1>Noticias</h1></a>
+            <a href="?p=<?=$page+1?>#noticias" class="button">></a>
         </div>
 
         <?php if ($posts): ?>
+            <div class="noticias">
             <?php foreach($posts as $post): ?>
                 <div class="noticia">
                     <div class="imagen-noticia"><img src=""></div>
@@ -191,13 +171,12 @@ $posts = json_decode($content);
                     </div>
                 </div>
             <?php endforeach ?>
+            </div>
         <?php endif ?>
-        <!-- TODO: Poder cambiar de página -->
-        <!-- <div class="navNoticias">
-            <?php //for($i=$page;$i<=$page+$maximoPorPagina; $i++): ?>
+        <!-- <button id="BackArrow"><</button>
+        <button id="NextArrow">></button> -->
+        <!-- NOTE: Esto funciona, pero recarga toda la página -->
 
-            <?php //endfor ?>
-        </div> -->
     </main>
 
     <footer class="contenedorFooter">
@@ -206,7 +185,33 @@ $posts = json_decode($content);
         </div>
     </footer>
     <script src="./js/calendar.js"></script>
+    <!-- <script src="">
+        function AjaxCall(pag) {
+            return function(e){
+                $.ajax(
+                {
+                    url: `./api/posts.php?p=${pag}`,
+                    type: "GET",
+                    success: (data)=>{
+                        alert("SUCCESFULL");
+                        console.log(JSON.parse(data));
+                    },
+                    error: (err)=>{
+                        console.error(err);
+                    }
+                }
+                );
+            }
+        }
 
+        document.getElementById("BackArrow")
+        // .onclick = AjaxCall(<?=$page-1?>);
+        .onclick = function (e){
+            console.log(e);
+        };
+
+        document.getElementById("NextArrow").onclick = AjaxCall(<?=$page+1?>);
+    </script> -->
     <script src="./js/resize_vh.js"></script>
 
 <!-- Modal -->

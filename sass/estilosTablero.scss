@@ -21,64 +21,80 @@ header {
   width: 100vw;
   height: 10vh;
   position: relative;
+}
 
-  div {
-    details[open] {
-      background: rgba(#0166ac, 0.7);
+header > div {
+  color: #ffffff;
+  font-size: 16px;
 
-      //   background: rgba(#c0c0c0, .9);
-      -webkit-box-shadow: 9px 3px 10px 0px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: 9px 3px 10px 0px rgba(0, 0, 0, 0.75);
-      box-shadow: 9px 3px 10px 0px rgba(0, 0, 0, 0.75);
-      overflow-y: auto;
-      z-index: 100;
-      height: 100vh;
-    }
+  & > details[open] {
+    background: rgba(#0166ac, 0.7);
+
+    //   background: rgba(#c0c0c0, .9);
+    -webkit-box-shadow: 9px 3px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 9px 3px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 9px 3px 10px 0px rgba(0, 0, 0, 0.75);
+    overflow-y: auto;
+    z-index: 100;
+    height: 100vh;
 
     details {
-      height: 10vh;
-      width: 100%;
-      z-index: -1;
-      summary {
-        display: flex;
-        justify-content: center;
-        align-items: center;
 
-        width: 90%;
-        height: 10vh;
+      text-align: justify;
+      display: inline-block;
+      font-size: .7em;
+      height: 100%;
+      width: 90%;
+      padding: 0 1em;
 
-        span {
-          background: #777774;
-          margin: 0 1em;
-          border-radius: 1em;
-          padding-top: 0.1em;
-          padding-bottom: 0.1em;
-          padding-right: 0.8em;
-          padding-left: 0.8em;
-          text-align: center;
-          font-weight: bold;
-        }
-      }
-    }
-
-    details > p {
-      padding: 1em;
-      font-size: 0.7em;
-
-      .amarillo {
-        color: yellow;
-      }
-
-      .azul {
-        color: #a8daf4;
+      summary{
+        text-align: center;
+        display: inline-block;
+        height: auto;
+        word-wrap: break-word;
       }
     }
   }
-}
 
-header div {
-  color: #ffffff;
-  font-size: 16px;
+  & > details {
+    height: 5vh;
+    width: 100%;
+    z-index: -1;
+
+    summary {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 90%;
+      height: 10vh;
+
+      span {
+        background: #777774;
+        margin: 0 1em;
+        border-radius: 1em;
+        padding-top: 0.1em;
+        padding-bottom: 0.1em;
+        padding-right: 0.8em;
+        padding-left: 0.8em;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+
+  & > details > p {
+    padding: 0 1em;
+    font-size: 0.7em;
+
+    .amarillo {
+      color: yellow;
+    }
+
+    .azul {
+      color: #a8daf4;
+    }
+  }
 }
 
 #saludo {
