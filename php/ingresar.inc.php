@@ -1,16 +1,15 @@
 <?php
 
-include('./php/conexion.php');
+require_once './php/conexion.php';
 
 $error = null;
 
 // verificacion
 
 session_start();
-session_destroy();
-session_unset();
+session_regenerate_id(true);
 
-if (isset($_POST["btnIngresar"])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {//Chequea si se accedió por medio de POST
 
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -21,7 +20,7 @@ if (isset($_POST["btnIngresar"])) {
         $error = "*Debe escribir algo en el campo password*";
     } else {
 
-        if ($stmt = mysqli_prepare($cn, "SELECT idUsuario, contraseña, idTipoUsuario FROM Usuario WHERE usuario = ?")) {
+        if ($stmt = mysqli_prepare($cn, "SELECT * FROM Usuario WHERE usuario = ?")) {
 
             mysqli_stmt_bind_param($stmt, 's', $username);
             mysqli_stmt_execute($stmt);
@@ -38,18 +37,19 @@ if (isset($_POST["btnIngresar"])) {
                     if (password_verify($password, $row['contraseña'])) {
                         session_start();
 
-                        if ($row['idTipoUsuario'] == 1) {
+                        $_SESSION = $row;
+                        unset($_SESSION['contraseña']);
+                        // $_SESSION['userId'] = $row['idUsuario'];
+                        // $_SESSION['userType'] = $row['idTipoUsuario'];
+                        // if ($row['idTipoUsuario'] == 1) {
+                        //     header("Location: tableroAdministrador.php");
 
-                            $_SESSION['userId'] = $row['idUsuario'];
-                            $_SESSION['userType'] = $row['idTipoUsuario'];
-                            header("Location: tableroA.php");
-                        } elseif ($row['idTipoUsuario'] == 2) {
-                            $_SESSION['userId'] = $row['idUsuario'];
-                            $_SESSION['userType'] = $row['idTipoUsuario'];
-                            header("Location: tableroC.php");
-                        } else {
-                            echo "<script> alert('Error de autenticacion'); window.location.href='./ingresar.php'; </script>";
-                        }
+                        // } elseif ($row['idTipoUsuario'] == 2) {
+                            
+                        // } else {
+                        //     echo "<script> alert('Error de autenticacion'); window.location.href='./ingresar.php'; </script>";
+                        // }
+                        header("Location: tablero.php");
                     } else {
                         $counter++;
                         if ($counter == $numUsuarios) {

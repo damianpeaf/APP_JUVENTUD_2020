@@ -5,7 +5,7 @@ $dir = getURL(getcwd());
 $page = (isset($_GET['p'])&&is_numeric($_GET['p'])&&$_GET['p']>0)? $_GET['p'] : 1;
 
 $url = "http://localhost/{$dir}/api/posts.php";//NOTE Tenemos que cambiar esto cuando usemos ya el host
-$posts = null;
+$posts = false; $mensaje = false;
 $posts = apiCall("{$url}?p={$page}", "GET");
 $mensaje = (is_string($posts))? $posts: false;
 
@@ -158,8 +158,11 @@ $mensaje = (is_string($posts))? $posts: false;
             <a name="noticias"><h1>Noticias</h1></a>
             <a href="?p=<?=$page+1?>#noticias" class="button">></a>
         </div>
-
-        <?php if ($posts): ?>
+        <?php if ($mensaje): ?>
+            <div class="noticias">
+                <h3><?=$mensaje?></h3>
+            </div>
+        <?php elseif ($posts): ?>
             <div class="noticias">
             <?php foreach($posts as $post): ?>
                 <div class="noticia">

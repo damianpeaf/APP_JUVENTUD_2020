@@ -1,17 +1,14 @@
 <?php
 
-include './php/conexion.php';
-include './php/validacionUsuario.php';
+require_once './php/conexion.php';
+require_once './php/validacionUsuario.php';
 
 if ($userId != null && $userId != '') {
 
-    $resultados1 = mysqli_fetch_array(mysqli_query($cn, "SELECT * FROM Usuario WHERE idUsuario = '" . $userId . "' "));
-    $verificacion = $resultados1['idTipoUsuario'] == 1;
+    if ($_SESSION['idTipoUsuario'] == 1) {
 
-    if ($verificacion) {
-
-        $ultimasNoticiasPublicadas = mysqli_query($cn, "SELECT * FROM post where idStatus = 1 order by idPost DESC limit 6");
-        $ultimasEventosPublicados = mysqli_query($cn, "SELECT * FROM evento where idStatus = 1 order by idEvento DESC limit 6");
+        $ultimasNoticiasPublicadas = mysqli_query($cn, "SELECT * FROM post WHERE idStatus = 1 ORDER BY fechaDePublicacion ASC LIMIT 6");
+        $ultimasEventosPublicados = mysqli_query($cn, "SELECT * FROM evento WHERE idStatus = 1 ORDER BY fechaDePublicacion ASC LIMIT 6");
 
         $ultimasEventosSinRevisar = mysqli_query($cn, "SELECT * FROM evento where idStatus = 2 order by idEvento DESC limit 15");
         $ultimasNoticiasSinRevisar = mysqli_query($cn, "SELECT * FROM post where idStatus = 2 order by idPost DESC limit 15");
@@ -55,10 +52,9 @@ if ($userId != null && $userId != '') {
     <header>
         <div id="notificaciones">
             <details id="detalles-notificaciones" ontoggle="leido()">
-                <summary><i class="fa fa-bell" style="font-size:24px"> </i> Notificaciones: <span class="numNoti">
-                        <?php echo $numeroNotificaciones; ?> </span></summary>
+                <summary><i class="fa fa-bell" style="font-size:24px"> </i> Notificaciones: <span
+                        class="numNoti"><?php echo $numeroNotificaciones; ?> </span></summary>
 
-                <p></p>
 
                 <?php
 
@@ -86,19 +82,20 @@ if ($userId != null && $userId != '') {
 
             </details>
         </div>
-        <div id="saludo"> Bienvenido <?php echo $resultados1['usuario'] ?></div>
+        <div id="saludo"> Bienvenido <?php echo $_SESSION['usuario'] ?></div>
         <div id="cerrar"><a href="./php/cerrarSesion.php">Cerrar sesión</a></div>
     </header>
 
     <script>
-
     function leido() {
 
         document.querySelector('.numNoti').innerHTML = '0';
 
         $.ajax({
 
-            data: {userId: "<?php echo $userId ?>"},
+            data: {
+                userId: "<?php echo $userId ?>"
+            },
             url: './php/marcarLeido.php',
             type: 'POST',
             success: function(response) {
@@ -142,23 +139,23 @@ if ($userId != null && $userId != '') {
                     </div>
                     <a href="#">VER TODOS</a>
                 </div>
-                <div class="publicacion-eventos">
-                    <h3>Eventos</h3>
-                    <div class="datos-publicacion">
-                        <?php
-while ($res2 = mysqli_fetch_array($ultimasEventosPublicados)) {
 
-            $usuario = mysqli_fetch_array(mysqli_query($cn, " SELECT usuario from usuario Where idUsuario = '" . $res2['idUsuario'] . "' "));
-            $categoria = mysqli_fetch_array(mysqli_query($cn, " SELECT nombre from categoria Where idCategoria = '" . $res2['idCategoria'] . "' "));
+        <div class="publicacion-eventos">
+            <h3>Eventos</h3>
+            <div class="datos-publicacion">
+                <?php
+                    while ($res2 = mysqli_fetch_array($ultimasEventosPublicados)) {
 
-            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='#'> VER </a></p>";
+                    $usuario = mysqli_fetch_array(mysqli_query($cn, " SELECT usuario from usuario Where idUsuario = '" . $res2['idUsuario'] . "' "));
+                    $categoria = mysqli_fetch_array(mysqli_query($cn, " SELECT nombre from categoria Where idCategoria = '" . $res2['idCategoria'] . "' "));
+
+                    echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='#'> VER </a></p>";
         }
 
         ?>
-                    </div>
-                    <a href="#">VER TODOS</a>
-                </div>
             </div>
+            <a href="#">VER TODOS</a>
+        </div>
         </div>
         </div>
 
@@ -210,9 +207,6 @@ while ($res2 = mysqli_fetch_array($ultimasEventosSinRevisar)) {
                 <a href="#">VER TODOS</a>
             </div>
 
-        </div>
-
-        </div>
         </div>
     </main>
 </body>

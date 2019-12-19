@@ -3,8 +3,9 @@
     session_start();
 
 
-    if (isset($_SESSION['userId'])) {
+    if (isset($_SESSION['idUsuario'])) {
         session_destroy();
+        $_SESSION = [];
         echo "<script>
         alert('Sesión cerrada');
         window.location.href='../ingresar.php';
