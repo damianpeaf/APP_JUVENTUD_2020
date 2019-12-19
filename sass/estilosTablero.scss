@@ -86,6 +86,8 @@ header > div {
   & > details > p {
     padding: 0 1em;
     font-size: 0.7em;
+    text-align: justify;
+    word-wrap: break-word;
 
     .amarillo {
       color: yellow;

@@ -56,6 +56,11 @@ header > div > details[open] details summary {
   word-wrap: break-word;
 }
 
+header > div > details[open] details summary > span {
+  color: yellow;
+  font-weight: bold;
+}
+
 header > div > details {
   height: 5vh;
   width: 100%;
@@ -91,6 +96,8 @@ header > div > details summary span {
 header > div > details > p {
   padding: 0 1em;
   font-size: 0.7em;
+  text-align: justify;
+  word-wrap: break-word;
 }
 
 header > div > details > p .amarillo {
