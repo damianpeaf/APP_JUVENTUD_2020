@@ -5,7 +5,7 @@ require_once './php/ingresar.inc.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -22,7 +22,7 @@ require_once './php/ingresar.inc.php';
 
     <header>
         <nav>
-            <a href="index.html"><img src="./img/desktop/logo.png" alt="" class="imgs"></a>
+            <a href="index.php"><img src="./img/desktop/logo.png" alt="" class="imgs"></a>
             <a href="#"><img src="./img/desktop/logo2.png" alt="" class="imgs"></a>
         </nav>
     </header>

@@ -28,7 +28,7 @@ if ($userId != null && $userId != '') {
         ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -132,7 +132,9 @@ if ($userId != null && $userId != '') {
             $usuario = mysqli_fetch_array(mysqli_query($cn, " SELECT usuario from usuario Where idUsuario = '" . $res['idUsuario'] . "' "));
             $categoria = mysqli_fetch_array(mysqli_query($cn, " SELECT nombre from categoria Where idCategoria = '" . $res['idCategoria'] . "' "));
 
-            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='#'> VER </a></p>";
+            $idPublicacion = $res['idPost'];
+
+            echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='ver.php?idPost=" . $idPublicacion . "'> Ver </a></p>";
         }
 
         ?>
@@ -149,7 +151,9 @@ if ($userId != null && $userId != '') {
                     $usuario = mysqli_fetch_array(mysqli_query($cn, " SELECT usuario from usuario Where idUsuario = '" . $res2['idUsuario'] . "' "));
                     $categoria = mysqli_fetch_array(mysqli_query($cn, " SELECT nombre from categoria Where idCategoria = '" . $res2['idCategoria'] . "' "));
 
-                    echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='#'> VER </a></p>";
+                    $idPublicacion = $res2['idEvento'];
+
+                    echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='ver.php?idEvento=" . $idPublicacion . "'> Ver </a></p>";
         }
 
         ?>

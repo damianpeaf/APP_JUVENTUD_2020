@@ -19,13 +19,13 @@ switch($error){
 
 $tipos = mysqli_fetch_all(mysqli_query($cn, "SELECT * FROM TipoUsuario"), MYSQLI_ASSOC);
 if ($_SESSION['idTipoUsuario']!=1) {//Si no es Administrador
-  header("Location: tableroA.php");
+  header("Location: tablero.php");
   exit;
 }
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

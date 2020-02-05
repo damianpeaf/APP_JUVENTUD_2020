@@ -11,7 +11,7 @@ $mensaje = (is_string($posts))? $posts: false;
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,7 @@ $mensaje = (is_string($posts))? $posts: false;
     <link rel="stylesheet" href="./css/librerias/loader-custom.css">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/librerias/bootstrap4/bootstrap.min.css">
 
     <!-- Jquery -->
     <script src="js/jquery.min.js"></script>
@@ -39,12 +39,8 @@ $mensaje = (is_string($posts))? $posts: false;
     <script src="js/es.js"></script>
 
     <!-- Bootsrap modal -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="./js/librerias/popper.min.js"></script>
+    <script src="./js/librerias/boostrap 4/bootstrap.min.js"></script>
 
     <!-- basicos -->
     <link rel="stylesheet" href="css/estilosBase.css">
@@ -166,7 +162,36 @@ $mensaje = (is_string($posts))? $posts: false;
             <div class="noticias">
             <?php foreach($posts as $post): ?>
                 <div class="noticia">
-                    <div class="imagen-noticia"><img src=""></div>
+                    <div class="imagen-noticia">
+
+                    <?php
+
+                        if ($post->adjuntos != null) {
+
+                        $arrayAdjuntos = json_decode($post->adjuntos);
+
+                        foreach ($arrayAdjuntos as $archivo) {
+
+                            $imagenesEncontradas = 0;
+                            $path = "./docs/" . $archivo;
+                            $datosDelPath = pathinfo($path);
+
+                            if ($datosDelPath['extension'] == 'jpg' || $datosDelPath['extension'] == 'jpeg' || $datosDelPath['extension'] == 'png') {
+                                $imagenesEncontradas++;
+                                if ($imagenesEncontradas == 1) {
+                                    echo "<img src='" . $path . "' />";
+                                }
+
+                            }
+
+                        }
+                    } else {
+                        echo "<tr class='adjuntos'><td colspan='2'> No hay archivos adjuntos </td></tr>";
+                    }
+
+                    ?>
+
+                    </div>
                     <div class="informacion-noticia">
                         <div class="titulo-noticia"><?=$post->titulo?></div>
                         <div class="contenido-noticia"><?=substr($post->contenido, 0, 500)?></div>
@@ -231,7 +256,7 @@ $mensaje = (is_string($posts))? $posts: false;
         <div class="modal-body">
                 <div class="datos">
                     <h5>Descripción</h5>
-                    <p id="des" style="color: black !important;"></p>
+                    <p id="des" style="color: black !important; overflow-x: hidden !important; " ></p>
                 </div>
 
                 <div class="horario">

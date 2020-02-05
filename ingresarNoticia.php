@@ -12,7 +12,7 @@ if ($userId != null && $userId != '') {
         $idPost = null;
 
         $titulo = $_POST["titulo"];
-        $contenido = $_POST["contenido"];
+        $contenido = $_POST["editor"];
 
         $archivosPermitidos = array('image/png', 'image/jpeg', 'application/pdf', 'application/msword', 'application/vnd.ms-powerpoint');
 
@@ -102,7 +102,7 @@ if ($userId != null && $userId != '') {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -146,7 +146,7 @@ if ($userId != null && $userId != '') {
     </div>
 
     <div class="footer">
-        <button onclick="location.href='./tableroA.php';">Volver</button>
+        <button onclick="location.href='./tablero.php';">Volver</button>
     </div>
 
     <script>

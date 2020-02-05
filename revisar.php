@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,20 +10,18 @@
     <link rel="stylesheet" href="./css/estilosRevision.css">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/librerias/bootstrap4/bootstrap.min.css">
+
 
     <!-- Jquery -->
     <script src="js/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>
 
 
+
     <!-- Bootsrap modal -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
+    <script src="./js/librerias/popper.min.js"></script>
+    <script src="./js/librerias/boostrap 4/bootstrap.min.js"></script>
 
 
 </head>
@@ -32,13 +30,16 @@
 
     <?php
 
-    if (setlocale(LC_TIME, "es_GT.UTF-8")){
-        var_dump(localeconv());
-    }else {echo "<h2>ERROR</h2>";var_dump(setlocale(LC_ALL, 0));}
+    // if (setlocale(LC_TIME, "es_GT.UTF-8")){
+    //     var_dump(localeconv());
+    // }else {echo "<h2>ERROR</h2>";var_dump(setlocale(LC_ALL, 0));}
 
     require_once './php/conexion.php';
     require_once './php/validacionUsuario.php';
 
+    $lenguage = 'es_GT.UTF-8';
+    putenv("LANG=$lenguage");
+    setlocale(LC_ALL, $lenguage);
 
     if ($userId != null && $userId != '') {
 
@@ -127,7 +128,7 @@
                             echo "<tr class='adjuntos'><td colspan='2'><img src='" . $path . "' /></td></tr>";
 
                         } else {
-                            echo "<tr class='adjuntos' ><td colspan='2'><a  href=" . $path . " download=" . $datosDelPath['filename'] . "><img class='iconoDescargar' src='./img/desktop/iconoDescargar.png' >" . $datosDelPath['filename'] . "</a></td></tr>";
+                            echo "<tr class='adjuntos' ><td colspan='2'><a  href='". $path ."' download='" . $datosDelPath['filename']."'><img class='iconoDescargar' src='./img/desktop/iconoDescargar.png' >" . $datosDelPath['filename'] . "</a></td></tr>";
                         }
 
                     }
@@ -222,7 +223,7 @@
                             echo "<tr class='adjuntos'><td colspan='2'><img src='" . $path . "' /></td></tr>";
 
                         } else {
-                            echo "<tr class='adjuntos' ><td colspan='2'><a  href=" . $path . " download=" . $datosDelPath['filename'] . "><img class='iconoDescargar' src='./img/desktop/iconoDescargar.png' >" . $datosDelPath['filename'] . "</a></td></tr>";
+                            echo "<tr class='adjuntos' ><td colspan='2'><a  href='". $path ."' download='" . $datosDelPath['filename']."'><img class='iconoDescargar' src='./img/desktop/iconoDescargar.png' >" . $datosDelPath['filename'] . "</a></td></tr>";                            
                         }
 
                     }
@@ -302,7 +303,7 @@ if (isset($_POST["btnAceptar"])) {
                 mysqli_stmt_execute($stmt);
 
                 if (mysqli_stmt_affected_rows($stmt) > 0) {
-                    echo "<script> alert('Haz rechazado'); window.location.href='tableroA.php'; </script>";
+                    echo "<script> alert('Haz rechazado'); window.location.href='tablero.php'; </script>";
 
                 }else{
                     echo "<script> alert('Hubo un error');</script>";

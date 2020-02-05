@@ -140,7 +140,7 @@ body {
   grid-area: calendario;
   position: relative;
   padding: 0.8rem;
-  background-image: linear-gradient(black, rgba(0, 0, 0, 0)), url("../img/desktop/banner.png");
+  background-color: $gray1;
   background-repeat: no-repeat;
   background-size: 100%;
   background-blend-mode: darken;
