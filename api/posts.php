@@ -8,7 +8,7 @@ require_once '../php/functions.php';
 // header("Access-Control-Max-Age: 3600");
 // header("Acces-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-$maximoPorPagina = 3;
+$maximoPorPagina = 6;
 // var_dump(getURL(getcwd()));
 if (isset($_GET['p'])&&is_numeric($_GET['p'])&&$_GET['p']>0) {
   $cantidadRegistros = mysqli_fetch_assoc(mysqli_query($cn, "SELECT COUNT(*) as CantidadPosts FROM Post WHERE idStatus=1"));

@@ -161,43 +161,13 @@ $mensaje = (is_string($posts))? $posts: false;
         <?php elseif ($posts): ?>
             <div class="noticias">
             <?php foreach($posts as $post): ?>
-                <div class="noticia">
-                    <div class="imagen-noticia">
 
-                    <?php
-
-                        if ($post->adjuntos != null) {
-
-                        $arrayAdjuntos = json_decode($post->adjuntos);
-
-                        foreach ($arrayAdjuntos as $archivo) {
-
-                            $imagenesEncontradas = 0;
-                            $path = "./docs/" . $archivo;
-                            $datosDelPath = pathinfo($path);
-
-                            if ($datosDelPath['extension'] == 'jpg' || $datosDelPath['extension'] == 'jpeg' || $datosDelPath['extension'] == 'png') {
-                                $imagenesEncontradas++;
-                                if ($imagenesEncontradas == 1) {
-                                    echo "<img src='" . $path . "' />";
-                                }
-
-                            }
-
-                        }
-                    } else {
-                        echo "<tr class='adjuntos'><td colspan='2'> No hay archivos adjuntos </td></tr>";
-                    }
-
-                    ?>
-
-                    </div>
-                    <div class="informacion-noticia">
+                <div class="noticia">        
+                    <div class="datos">
                         <div class="titulo-noticia"><?=$post->titulo?></div>
-                        <div class="contenido-noticia"><?=substr($post->contenido, 0, 500)?></div>
-                        <p><a href=''> Ver más. </a></p>
                     </div>
                 </div>
+
             <?php endforeach ?>
             </div>
         <?php endif ?>
@@ -209,7 +179,7 @@ $mensaje = (is_string($posts))? $posts: false;
 
     <footer class="contenedorFooter">
         <div class="copyright">
-            <h1>COPYRIGHT</h1>
+            <h6 id="footer-text">©Copyright Juventud 2020</h6>
         </div>
     </footer>
     <script src="./js/calendar.js"></script>
