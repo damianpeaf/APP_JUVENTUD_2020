@@ -183,6 +183,7 @@ if ($userId != null && $userId != '') {
 
             $idPost = $res2['idPost'];
 
+          
             echo "<p><span class='autor'>" . $usuario[0] . "</span> publicó para <span class='categoria'>" . $categoria[0] . "<a href='revisar.php?idPost=" . $idPost . "'> Revisar </a></p>";
 
         }
