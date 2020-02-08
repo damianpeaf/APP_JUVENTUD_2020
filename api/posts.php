@@ -13,11 +13,12 @@ $maximoPorPagina = 6;
 if (isset($_GET['p'])&&is_numeric($_GET['p'])&&$_GET['p']>0) {
   $cantidadRegistros = mysqli_fetch_assoc(mysqli_query($cn, "SELECT COUNT(*) as CantidadPosts FROM Post WHERE idStatus=1"));
   $comienzo = ($_GET['p']==1)? 0: ($_GET['p']-1)*$maximoPorPagina;
-  $stmt = mysqli_prepare($cn, "SELECT * FROM POST WHERE idStatus=1 LIMIT ?, {$maximoPorPagina}");
+  $stmt = mysqli_prepare($cn, "SELECT * FROM POST WHERE idStatus=1 order by idPost desc LIMIT ?, {$maximoPorPagina}");
   
   mysqli_stmt_bind_param($stmt, "i", $comienzo);
   mysqli_stmt_execute($stmt);
   mysqli_stmt_bind_result($stmt, $idStatus, $idUsuario, $idCategoria, $idEvento, $idPost, $titulo, $fechaDePublicacion, $contenido, $adjuntos);
+
 
   $result = [];
   while (mysqli_stmt_fetch($stmt)) {
@@ -30,7 +31,8 @@ if (isset($_GET['p'])&&is_numeric($_GET['p'])&&$_GET['p']>0) {
       "titulo"=>$titulo,
       "fechaDePublicacion"=>$fechaDePublicacion,
       "contenido"=>$contenido,
-      "adjuntos"=>$adjuntos
+      "adjuntos"=>$adjuntos,
+
     ];
   }
   // var_dump($result);

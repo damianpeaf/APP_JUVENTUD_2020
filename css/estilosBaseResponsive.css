@@ -18,7 +18,7 @@
   .contenedorHeader .redes-container img {
     height: 2.2em;
     width: 2.2em;
-    margin: 0 .5em;
+    margin: 0 0.5em;
   }
 }
 
@@ -43,8 +43,8 @@
 
 @media screen and (max-width: 500px) {
   body {
-    -ms-grid-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc( var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
-        grid-template-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc( var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
+    -ms-grid-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
+        grid-template-rows: calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 80) calc(var(--vh, 1vh) * 10) calc(var(--vh, 1vh) * 90) calc(var(--vh, 1vh) * 10);
         grid-template-areas: "nav nav nav nav nav nav nav nav nav nav" "calendario calendario calendario calendario calendario calendario calendario calendario calendario calendario" "opciones opciones opciones opciones opciones opciones opciones opciones opciones opciones" "noticias noticias noticias noticias noticias noticias noticias noticias noticias noticias" "footer footer footer footer footer footer footer footer footer footer";
   }
   .contenedorNoticiass {
@@ -62,7 +62,8 @@
   .contenedorCalendario #calendario h2 {
     font-size: 20px;
   }
-  .contenedorCalendario #calendario .fc-toolbar, .contenedorCalendario #calendario .fc-header-toolbar {
+  .contenedorCalendario #calendario .fc-toolbar,
+  .contenedorCalendario #calendario .fc-header-toolbar {
     margin: 0;
   }
   .contenedorHeader {
@@ -110,7 +111,7 @@
   .phone-header .redes-container img {
     height: 2.7em;
     width: 2.7em;
-    margin: 0 .5em;
+    margin: 0 0.5em;
   }
   .phone-header #logoJuventud {
     -ms-grid-column-align: end;
@@ -135,14 +136,14 @@
         grid-template-columns: repeat(4, 1fr);
   }
   .phone-footer .categorias div {
-    border-top: .5rem solid;
+    border-top: 0.5rem solid;
     position: relative;
     width: 100%;
     height: 10vh;
-    -webkit-transition: .2s;
-    transition: .2s;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
   }
-  .phone-footer .categorias div a {
+  .phone-footer .categorias div span {
     display: inline;
     position: absolute;
     top: 50%;
@@ -165,6 +166,46 @@
   }
   .phone-footer .categorias div:hover {
     background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .noticias .noticia .datos .encabezado-noticia {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: (1fr)[2] !important;
+        grid-template-rows: repeat(2, 1fr) !important;
+        grid-template-areas: "titulo titulo" "boton boton " !important;
+  }
+  .noticias .noticia .datos .titulo-noticia {
+    -ms-grid-row: 1 !important;
+    -ms-grid-column: 1 !important;
+    -ms-grid-column-span: 2 !important;
+    grid-area: titulo !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+  .noticias .noticia .datos .btn-ver {
+    -ms-grid-row: 2 !important;
+    -ms-grid-column: 1 !important;
+    -ms-grid-column-span: 2 !important;
+    grid-area: boton !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 /*# sourceMappingURL=estilosBaseResponsive.css.map */
