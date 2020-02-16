@@ -170,7 +170,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   justify-content: flex-end;
-  padding: 2rem;
+  padding: 1rem;
 
   // .noticias {
   //   display: grid;
@@ -183,7 +183,6 @@ body {
       font-family: "Josefin Sans", sans-serif !important;
       min-width: 95%;
       padding: 1rem;
-      margin: 1rem;
       border-radius: 0.1rem;
       .datos {
         background: #ffffff;
@@ -247,10 +246,12 @@ body {
 .contenedorNoticias:hover::-webkit-scrollbar {
   display: initial;
   background: rgba($gray2, 0.7);
+  width: 1vw;
+
 }
 
 .contenedorNoticias::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
+  border-radius: .2rem;
   background-color: #00d2ff;
   background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
 }
@@ -291,6 +292,10 @@ body {
   bottom: 20px;
   right: 20px;
   z-index: 101;
+  
+  animation: titilar 1s infinite;
+  animation-direction: alternate;
+
 }
 
 .ir-abajo {
@@ -302,6 +307,18 @@ body {
   z-index: 101;
   height: 100%;
   box-sizing: border-box;
+
+  animation: titilar 1s infinite;
+  animation-direction: alternate;
+}
+
+@keyframes titilar{
+  from{
+    opacity: .1;
+  }
+  to{
+    opacity: 1;
+  }
 }
 
 @import "estilosBaseResponsive.scss";
