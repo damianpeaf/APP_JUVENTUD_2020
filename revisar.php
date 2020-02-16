@@ -16,9 +16,10 @@
     <!-- Jquery -->
     <script src="js/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>
+ 
 
 
-
+ 
     <!-- Bootsrap modal -->
     <script src="./js/librerias/popper.min.js"></script>
     <script src="./js/librerias/boostrap 4/bootstrap.min.js"></script>

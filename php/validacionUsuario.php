@@ -10,4 +10,12 @@ if ($userId == null || $userId == '') {
         </script>";
 }
 
+    if ($_SESSION['idStatus'] == 3) {
+        echo "<script>
+        alert('Este usuario ha sido eliminado');
+        window.location.href='ingresar.php';
+        </script>";
+    }
+
+
 ?>

@@ -1,3 +1,13 @@
+<?php
+
+require_once('./php/validacionUsuario.php');
+
+if ($userId != null && $userId != '') {
+
+    if ($_SESSION['idTipoUsuario'] == 1) {
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +48,7 @@
         </tr>
         <tr>
             <td>Eliminar usuario</td>
-            <td><a href="" class="btn btn-success">Ir</a></td>
+            <td><a href="./eliminarUsuario.php" class="btn btn-success">Ir</a></td>
         </tr>
         <tr>
             <td colspan="2">
@@ -48,3 +58,9 @@
     </table>
 </body>
 </html>
+
+<?php
+    }
+}
+
+?>

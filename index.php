@@ -186,6 +186,8 @@ $mensaje = (is_string($posts)) ? $posts : false;
                                     <div class="adjuntos">
                                         <?php
 
+                                        // echo $post->adjuntos;
+
                                         if ($post->adjuntos != null) {
                                             
                                             echo "<br><p style='font-weight: bold;'> Archivos adjuntos: </p>";

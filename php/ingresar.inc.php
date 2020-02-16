@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {//Cheque
                         $_SESSION = $row;
                         unset($_SESSION['contraseña']);
                         // $_SESSION['userId'] = $row['idUsuario'];
-                        // $_SESSION['userType'] = $row['idTipoUsuario'];
+                        $_SESSION['userType'] = $row['idTipoUsuario'];
                         // if ($row['idTipoUsuario'] == 1) {
                         //     header("Location: tableroAdministrador.php");
 
