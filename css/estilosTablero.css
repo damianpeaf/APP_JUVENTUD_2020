@@ -312,4 +312,42 @@ main {
     font-size: 0.7em;
   }
 }
+
+.more-options {
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: .2rem;
+}
+
+.more-options button {
+  height: 50%;
+  width: 75%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #4caf50;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  color: white;
+  border: 2pt solid #4caf50;
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.more-options button:hover {
+  color: black;
+  background: white;
+  border: 2pt solid #4caf50;
+  cursor: pointer;
+}
 /*# sourceMappingURL=estilosTablero.css.map */

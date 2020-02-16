@@ -62,7 +62,7 @@ if ($_SESSION['idTipoUsuario']!=1) {//Si no es Administrador
   </form>
 </div>
   <footer class="footer">
-    <button>Volver</button>
+    <button onclick="location.href='more-options.php'  ">Volver</button>
   </footer>
 </body>
 </html>
