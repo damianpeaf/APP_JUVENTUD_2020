@@ -40,7 +40,7 @@ if ($userId != null && $userId != '') {
         </tr>
         <tr>
             <td>Eliminar POST</td>
-            <td><a href="" class="btn btn-success">Ir</a></td>
+            <td><a href="./eliminarPost.php" class="btn btn-success">Ir</a></td>
         </tr>
         <tr>
             <td>Eliminar Evento</td>

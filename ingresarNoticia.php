@@ -133,7 +133,6 @@ if ($userId != null && $userId != '') {
             </p>
             <p>Título <input type="text" name="titulo" placeholder="Título"></p>
             <p>Contenido</p>
-            <p>Nota: <span style="font-weight: bold"> NO </span> utilizar colores claros en las letras</p>
             <p>
                 <textarea name="editor" id="editor" rows="10" cols="80"></textarea>
             </p>
