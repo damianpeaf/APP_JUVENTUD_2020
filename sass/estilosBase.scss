@@ -278,6 +278,11 @@ body {
     margin: auto;
     font-size: 1rem;
     font-weight: bold;
+    color: white;
+
+    a{
+      color: blue;
+    }
   }
 }
 
@@ -293,7 +298,7 @@ body {
   right: 20px;
   z-index: 101;
   
-  animation: titilar 1s infinite;
+  animation: titilar .7s infinite;
   animation-direction: alternate;
 
 }
@@ -308,7 +313,7 @@ body {
   height: 100%;
   box-sizing: border-box;
 
-  animation: titilar 1s infinite;
+  animation: titilar .7s infinite;
   animation-direction: alternate;
 }
 

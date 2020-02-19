@@ -230,7 +230,7 @@ $mensaje = (is_string($posts)) ? $posts : false;
 
     <footer class="contenedorFooter">
         <div class="copyright">
-            <h6 id="footer-text">©Copyright Juventud 2020</h6>
+            <h6 id="footer-text">&copy;Juventud 2020 - Todos los derechos reservados - Desarrolado <a href="./creditos.html">Por</a></h6>
         </div>
     </footer>
     <script src="./js/calendar.js"></script>

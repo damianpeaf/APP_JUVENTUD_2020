@@ -346,6 +346,11 @@ body {
   margin: auto;
   font-size: 1rem;
   font-weight: bold;
+  color: white;
+}
+
+.contenedorFooter #footer-text a {
+  color: blue;
 }
 
 .ir-arriba {
@@ -359,8 +364,8 @@ body {
   bottom: 20px;
   right: 20px;
   z-index: 101;
-  -webkit-animation: titilar 1s infinite;
-          animation: titilar 1s infinite;
+  -webkit-animation: titilar .7s infinite;
+          animation: titilar .7s infinite;
   -webkit-animation-direction: alternate;
           animation-direction: alternate;
 }
@@ -375,8 +380,8 @@ body {
   height: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-animation: titilar 1s infinite;
-          animation: titilar 1s infinite;
+  -webkit-animation: titilar .7s infinite;
+          animation: titilar .7s infinite;
   -webkit-animation-direction: alternate;
           animation-direction: alternate;
 }
